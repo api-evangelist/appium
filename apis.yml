@@ -1,78 +1,84 @@
 name: Appium
-description: Appium is an open-source test automation framework for use with native, hybrid and mobile web apps. It drives iOS, Android, and Windows apps using the WebDriver protocol.
+description: Appium is an open-source test automation framework for use with 
+  native, hybrid and mobile web apps. It drives iOS, Android, and Windows apps 
+  using the WebDriver protocol.
 image: https://appium.io/docs/en/latest/assets/images/appium-logo.png
 created: 2024-01-15 00:00:00+00:00
 modified: 2024-01-15 00:00:00+00:00
 specificationVersion: '0.18'
 url: https://appium.io/apis.json
 apis:
-- name: Appium Server API
-  description: The main Appium server API that implements the WebDriver protocol for mobile automation
-  image: https://appium.io/docs/en/latest/assets/images/appium-logo.png
-  humanURL: https://appium.io/
-  baseURL: http://localhost:4723
-  tags:
+  - name: Appium Server API
+    description: >-
+      The main Appium server API that implements the WebDriver protocol for mobile
+      automation.
+    image: https://appium.io/docs/en/latest/assets/images/appium-logo.png
+    humanURL: https://appium.io/
+    baseURL: http://localhost:4723
+    tags:
+      - Mobile Testing
+      - Automation
+      - WebDriver
+      - iOS
+      - Android
+    properties:
+      - type: Documentation
+        url: https://appium.io/docs/en/latest/
+      - type: OpenAPI
+        url: 
+          https://raw.githubusercontent.com/appium/appium/master/packages/base-driver/lib/protocol/openapi.json
+      - type: GitHub
+        url: https://github.com/appium/appium
+      - type: Commands
+        url: https://appium.io/docs/en/latest/reference/commands/
+    contact:
+      - FN: Appium Community
+        email: appium@googlegroups.com
+        url: https://discuss.appium.io/
+  - name: Appium Inspector API
+    description: >-
+      Standalone GUI inspector for mobile apps that communicates with Appium server.
+    humanURL: https://github.com/appium/appium-inspector
+    baseURL: https://github.com/appium/appium-inspector/releases
+    tags:
+      - Inspector
+      - GUI
+      - Debugging
+      - Mobile Testing
+    properties:
+      - type: GitHub
+        url: https://github.com/appium/appium-inspector
+      - type: Downloads
+        url: https://github.com/appium/appium-inspector/releases
+maintainers:
+  - FN: Appium Contributors
+    email: appium@googlegroups.com
+    url: https://github.com/appium/appium/graphs/contributors
+tags:
   - Mobile Testing
-  - Automation
+  - Test Automation
   - WebDriver
   - iOS
   - Android
-  properties:
-  - type: Documentation
-    url: https://appium.io/docs/en/latest/
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/appium/appium/master/packages/base-driver/lib/protocol/openapi.json
-  - type: GitHub
-    url: https://github.com/appium/appium
-  - type: Commands
-    url: https://appium.io/docs/en/latest/reference/commands/
-  contact:
-  - FN: Appium Community
-    email: appium@googlegroups.com
-    url: https://discuss.appium.io/
-- name: Appium Inspector API
-  description: Standalone GUI inspector for mobile apps that communicates with Appium server
-  humanURL: https://github.com/appium/appium-inspector
-  baseURL: https://github.com/appium/appium-inspector/releases
-  tags:
-  - Inspector
-  - GUI
-  - Debugging
-  - Mobile Testing
-  properties:
-  - type: GitHub
-    url: https://github.com/appium/appium-inspector
-  - type: Downloads
-    url: https://github.com/appium/appium-inspector/releases
-maintainers:
-- FN: Appium Contributors
-  email: appium@googlegroups.com
-  url: https://github.com/appium/appium/graphs/contributors
-tags:
-- Mobile Testing
-- Test Automation
-- WebDriver
-- iOS
-- Android
-- Cross-Platform
-- Open Source
+  - Cross-Platform
+  - Open Source
 include:
-- name: WebDriver Protocol
-  url: https://www.w3.org/TR/webdriver/
+  - name: WebDriver Protocol
+    url: https://www.w3.org/TR/webdriver/
 common:
-- type: Getting Started
-  url: https://appium.io/docs/en/latest/quickstart/
-- type: GitHub Organization
-  url: https://github.com/appium
-- type: Discussion Forum
-  url: https://discuss.appium.io/
-- type: Slack
-  url: http://appium.slack.com
-- type: Twitter
-  url: https://twitter.com/AppiumDevs
-- type: Stack Overflow
-  url: https://stackoverflow.com/questions/tagged/appium
-- type: YouTube
-  url: https://www.youtube.com/c/AppiumConf
-- type: Changelog
-  url: https://github.com/appium/appium/blob/master/CHANGELOG.md
+  - type: Getting Started
+    url: https://appium.io/docs/en/latest/quickstart/
+  - type: GitHub Organization
+    url: https://github.com/appium
+  - type: Discussion Forum
+    url: https://discuss.appium.io/
+  - type: Slack
+    url: http://appium.slack.com
+  - type: Twitter
+    url: https://twitter.com/AppiumDevs
+  - type: Stack Overflow
+    url: https://stackoverflow.com/questions/tagged/appium
+  - type: YouTube
+    url: https://www.youtube.com/c/AppiumConf
+  - type: Changelog
+    url: https://github.com/appium/appium/blob/master/CHANGELOG.md
