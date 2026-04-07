@@ -1,7 +1,5 @@
 name: Appium
-description: Appium is an open-source test automation framework for use with 
-  native, hybrid and mobile web apps. It drives iOS, Android, and Windows apps 
-  using the WebDriver protocol.
+description: Appium is an open-source test automation framework for use with native, hybrid and mobile web apps. It drives iOS, Android, and Windows apps using the WebDriver protocol.
 image: https://appium.io/docs/en/latest/assets/images/appium-logo.png
 created: 2024-01-15 00:00:00+00:00
 modified: 2024-01-15 00:00:00+00:00
@@ -16,17 +14,16 @@ apis:
     humanURL: https://appium.io/
     baseURL: http://localhost:4723
     tags:
-      - Mobile Testing
-      - Automation
-      - WebDriver
-      - iOS
       - Android
+      - Automation
+      - iOS
+      - Mobile Testing
+      - WebDriver
     properties:
       - type: Documentation
         url: https://appium.io/docs/en/latest/
       - type: OpenAPI
-        url: 
-          https://raw.githubusercontent.com/appium/appium/master/packages/base-driver/lib/protocol/openapi.json
+        url: https://raw.githubusercontent.com/appium/appium/master/packages/base-driver/lib/protocol/openapi.json
       - type: GitHub
         url: https://github.com/appium/appium
       - type: Commands
@@ -41,9 +38,9 @@ apis:
     humanURL: https://github.com/appium/appium-inspector
     baseURL: https://github.com/appium/appium-inspector/releases
     tags:
-      - Inspector
-      - GUI
       - Debugging
+      - GUI
+      - Inspector
       - Mobile Testing
     properties:
       - type: GitHub
@@ -55,13 +52,13 @@ maintainers:
     email: appium@googlegroups.com
     url: https://github.com/appium/appium/graphs/contributors
 tags:
-  - Mobile Testing
-  - Test Automation
-  - WebDriver
-  - iOS
   - Android
   - Cross-Platform
+  - iOS
+  - Mobile Testing
   - Open Source
+  - Test Automation
+  - WebDriver
 include:
   - name: WebDriver Protocol
     url: https://www.w3.org/TR/webdriver/
