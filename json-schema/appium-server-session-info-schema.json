@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/appium/refs/heads/main/json-schema/appium-server-session-info-schema.json",
+  "title": "SessionInfo",
+  "description": "Information about a single active Appium session",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Session identifier",
+      "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    },
+    "capabilities": {
+      "type": "object",
+      "description": "The capabilities used to create the session"
+    }
+  }
+}

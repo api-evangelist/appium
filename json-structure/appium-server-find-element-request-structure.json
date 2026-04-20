@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/appium/refs/heads/main/json-structure/appium-server-find-element-request-structure.json",
+  "name": "FindElementRequest",
+  "description": "Request to find an element using a locator strategy",
+  "type": "object",
+  "properties": {
+    "using": {
+      "type": "string",
+      "description": "The element locator strategy",
+      "enum": [
+        "accessibility id",
+        "id",
+        "xpath",
+        "class name",
+        "name",
+        "css selector",
+        "-android uiautomator",
+        "-ios predicate string"
+      ],
+      "example": "accessibility id"
+    },
+    "value": {
+      "type": "string",
+      "description": "The selector value for the locator strategy",
+      "example": "Login Button"
+    }
+  },
+  "required": [
+    "using",
+    "value"
+  ]
+}

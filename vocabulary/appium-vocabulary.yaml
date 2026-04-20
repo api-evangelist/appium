@@ -1,0 +1,286 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Appium
+  description: >-
+    Unified vocabulary for Appium mobile test automation, covering operational API
+    dimensions (WebDriver protocol endpoints, session management, element interaction)
+    and capability dimensions (test automation workflows, MCP tools, QA personas).
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - name: Appium Server API
+      namespace: appium
+      version: "2.0.0"
+      baseUrl: "http://localhost:4723"
+      status: active
+
+  resources:
+    - name: sessions
+      description: WebDriver automation session lifecycle
+      api: Appium Server API
+      actions:
+        - create
+        - delete
+        - list
+    - name: elements
+      description: UI elements within app screens
+      api: Appium Server API
+      actions:
+        - find
+        - click
+        - get-text
+        - send-keys
+        - get-screenshot
+    - name: screenshots
+      description: Device screen captures
+      api: Appium Server API
+      actions:
+        - capture
+    - name: apps
+      description: Mobile application lifecycle on device
+      api: Appium Server API
+      actions:
+        - activate
+        - terminate
+        - install
+        - remove
+        - check-installed
+    - name: contexts
+      description: Native/webview context switching
+      api: Appium Server API
+      actions:
+        - get-current
+        - set
+        - list
+    - name: device
+      description: Device state and orientation
+      api: Appium Server API
+      actions:
+        - get-orientation
+        - set-orientation
+        - get-time
+        - push-file
+    - name: settings
+      description: Appium session settings
+      api: Appium Server API
+      actions:
+        - get
+        - update
+    - name: actions
+      description: W3C Actions API for complex input sequences
+      api: Appium Server API
+      actions:
+        - perform
+        - release
+    - name: alerts
+      description: Native dialog and alert handling
+      api: Appium Server API
+      actions:
+        - accept
+        - dismiss
+        - get-text
+    - name: server
+      description: Appium server health and status
+      api: Appium Server API
+      actions:
+        - get-status
+
+  actions:
+    - name: create
+      httpMethod: POST
+      pattern: write
+    - name: delete
+      httpMethod: DELETE
+      pattern: destructive
+    - name: find
+      httpMethod: POST
+      pattern: query
+    - name: capture
+      httpMethod: GET
+      pattern: read
+    - name: activate
+      httpMethod: POST
+      pattern: write
+    - name: install
+      httpMethod: POST
+      pattern: write
+    - name: get-status
+      httpMethod: GET
+      pattern: read
+    - name: perform
+      httpMethod: POST
+      pattern: write
+    - name: list
+      httpMethod: GET
+      pattern: read
+
+  schemas:
+    core:
+      - name: SessionInfo
+        description: Active session metadata including ID and capabilities
+      - name: FindElementRequest
+        description: Element locator strategy and selector value
+      - name: AppIdRequest
+        description: App identifier by package name or bundle ID
+      - name: ActionSequence
+        description: W3C Actions sequence for a single input source
+      - name: Cookie
+        description: Browser cookie from a WebDriver session
+
+  parameters:
+    identifiers:
+      - name: sessionId
+        description: Unique session identifier (path parameter)
+      - name: elementId
+        description: Unique element identifier within a session (path parameter)
+    input:
+      - name: using
+        description: Element locator strategy (accessibility id, xpath, id, etc.)
+      - name: value
+        description: Selector value for the locator strategy
+      - name: appId
+        description: Android package name or iOS bundle identifier
+      - name: appPath
+        description: File path or URL to app binary for installation
+
+  enums:
+    locatorStrategies:
+      - accessibility id
+      - id
+      - xpath
+      - class name
+      - name
+      - css selector
+      - link text
+      - partial link text
+      - -android uiautomator
+      - -android datamatcher
+      - -ios predicate string
+      - -ios class chain
+    orientations:
+      - PORTRAIT
+      - LANDSCAPE
+    contexts:
+      - NATIVE_APP
+      - WEBVIEW
+    actionTypes:
+      - pointer
+      - key
+      - wheel
+      - none
+
+  authentication:
+    schemes:
+      - type: none
+        description: Appium server runs locally without authentication by default. Remote server deployments may use custom authentication middleware.
+
+capability:
+  workflows:
+    - name: Mobile Test Automation
+      file: capabilities/mobile-test-automation.yaml
+      description: End-to-end mobile app test automation combining session management, element interaction, device control, and visual capture
+      apis:
+        - Appium Server API
+      toolCount: 7
+      personas:
+        - QA Engineer
+        - Test Automation Engineer
+
+  personas:
+    - id: qa-engineer
+      name: QA Engineer
+      description: Quality assurance professional writing and running mobile app tests
+      workflows:
+        - Mobile Test Automation
+
+    - id: test-automation-engineer
+      name: Test Automation Engineer
+      description: Engineer building automated test frameworks and CI/CD pipelines for mobile apps
+      workflows:
+        - Mobile Test Automation
+
+  domains:
+    - name: Test Automation
+      description: Automated testing of mobile and web applications
+      resources:
+        - sessions
+        - elements
+        - screenshots
+    - name: Device Management
+      description: Device-level operations including app lifecycle and device state
+      resources:
+        - apps
+        - device
+        - contexts
+    - name: Input Simulation
+      description: Simulating user input including taps, swipes, and text entry
+      resources:
+        - actions
+        - elements
+
+  namespaces:
+    - name: appium
+      type: consumed
+      baseUri: "http://localhost:4723"
+    - name: mobile-automation-api
+      type: rest-exposed
+      port: 8080
+    - name: mobile-automation-mcp
+      type: mcp-exposed
+      port: 9090
+
+  binds:
+    - name: APPIUM_HOST
+      description: Hostname and port of the Appium server
+      workflows:
+        - Mobile Test Automation
+
+crossReference:
+  - resource: sessions
+    operations:
+      - createSession
+      - deleteSession
+      - getAppiumSessions
+    workflows:
+      - Mobile Test Automation
+    personas:
+      - QA Engineer
+      - Test Automation Engineer
+
+  - resource: elements
+    operations:
+      - findElement
+      - findElements
+      - click
+      - setValue
+      - getText
+    workflows:
+      - Mobile Test Automation
+    personas:
+      - QA Engineer
+      - Test Automation Engineer
+
+  - resource: screenshots
+    operations:
+      - getScreenshot
+      - getElementScreenshot
+    workflows:
+      - Mobile Test Automation
+    personas:
+      - QA Engineer
+      - Test Automation Engineer
+
+  - resource: apps
+    operations:
+      - activateApp
+      - terminateApp
+      - installApp
+      - removeApp
+      - isAppInstalled
+    workflows:
+      - Mobile Test Automation
+    personas:
+      - Test Automation Engineer

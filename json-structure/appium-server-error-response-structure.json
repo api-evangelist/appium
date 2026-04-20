@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/appium/refs/heads/main/json-structure/appium-server-error-response-structure.json",
+  "name": "ErrorResponse",
+  "description": "WebDriver protocol error response",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "description": "Error code",
+          "example": "no such element"
+        },
+        "message": {
+          "type": "string",
+          "description": "Human-readable error message",
+          "example": "An element could not be located on the page using the given search parameters."
+        },
+        "stacktrace": {
+          "type": "string",
+          "description": "Stack trace for debugging"
+        }
+      }
+    }
+  }
+}

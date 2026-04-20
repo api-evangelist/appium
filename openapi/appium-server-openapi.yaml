@@ -1,0 +1,1375 @@
+openapi: 3.0.3
+info:
+  title: Appium Server API
+  description: >-
+    The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop,
+    and TV app automation. It provides endpoints for session management, element interaction,
+    actions, screenshots, and Appium-specific device commands.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    name: Appium Community
+    url: https://discuss.appium.io/
+  x-generated-from: documentation
+servers:
+  - url: http://localhost:4723
+    description: Local Appium server (default port)
+tags:
+  - name: Server
+    description: Server status and session listing
+  - name: Sessions
+    description: WebDriver session lifecycle management
+  - name: Navigation
+    description: Browser and app navigation commands
+  - name: Windows
+    description: Window and frame management
+  - name: Elements
+    description: Element discovery and interaction
+  - name: Actions
+    description: W3C Actions API for complex input sequences
+  - name: Alerts
+    description: Dialog and alert handling
+  - name: Cookies
+    description: Cookie management
+  - name: Screenshots
+    description: Screenshot capture
+  - name: Appium Device
+    description: Appium-specific device commands (app management, files, keyboard)
+  - name: Appium Session
+    description: Appium session settings and capabilities
+paths:
+  /status:
+    get:
+      operationId: getStatus
+      summary: Appium Get Server Status
+      description: Returns the current status of the Appium server including readiness and metadata.
+      tags:
+        - Server
+      responses:
+        '200':
+          description: Server status returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+              examples:
+                GetStatus200Example:
+                  summary: Default getStatus 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                      ready: true
+                      message: The server is ready to accept new connections
+                      build:
+                        version: 2.5.0
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session:
+    post:
+      operationId: createSession
+      summary: Appium Create Session
+      description: Creates a new WebDriver/Appium automation session with the given capabilities.
+      tags:
+        - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+            examples:
+              CreateSessionRequestExample:
+                summary: Default createSession request
+                x-microcks-default: true
+                value:
+                  capabilities:
+                    alwaysMatch:
+                      platformName: Android
+                      appium:deviceName: emulator-5554
+                      appium:app: /path/to/app.apk
+      responses:
+        '200':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionResponse'
+              examples:
+                CreateSession200Example:
+                  summary: Default createSession 200 response
+                  x-microcks-default: true
+                  value:
+                    sessionId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    value:
+                      capabilities:
+                        platformName: Android
+                        deviceName: emulator-5554
+        '500':
+          description: Session creation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}:
+    delete:
+      operationId: deleteSession
+      summary: Appium Delete Session
+      description: Ends the current automation session and releases all associated resources.
+      tags:
+        - Sessions
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          description: The unique session identifier
+          schema:
+            type: string
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+      responses:
+        '200':
+          description: Session deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                DeleteSession200Example:
+                  summary: Default deleteSession 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /appium/sessions:
+    get:
+      operationId: getAppiumSessions
+      summary: Appium Get All Sessions
+      description: Returns a list of all currently active Appium sessions.
+      tags:
+        - Server
+      responses:
+        '200':
+          description: Sessions list returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionsListResponse'
+              examples:
+                GetAppiumSessions200Example:
+                  summary: Default getAppiumSessions 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                      - id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                        capabilities:
+                          platformName: Android
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/url:
+    get:
+      operationId: getUrl
+      summary: Appium Get Current URL
+      description: Returns the URL of the current page or app context.
+      tags:
+        - Navigation
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Current URL returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetUrl200Example:
+                  summary: Default getUrl 200 response
+                  x-microcks-default: true
+                  value:
+                    value: https://example.com
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: setUrl
+      summary: Appium Navigate to URL
+      description: Navigates to a given URL or activates a deep link.
+      tags:
+        - Navigation
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - url
+              properties:
+                url:
+                  type: string
+                  description: The URL to navigate to
+                  example: https://example.com
+      responses:
+        '200':
+          description: Navigation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                SetUrl200Example:
+                  summary: Default setUrl 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/screenshot:
+    get:
+      operationId: getScreenshot
+      summary: Appium Take Screenshot
+      description: Returns a base64-encoded PNG screenshot of the current screen.
+      tags:
+        - Screenshots
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Screenshot returned as base64 PNG
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetScreenshot200Example:
+                  summary: Default getScreenshot 200 response
+                  x-microcks-default: true
+                  value:
+                    value: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/element:
+    post:
+      operationId: findElement
+      summary: Appium Find Element
+      description: Finds the first element matching a given locator strategy and selector.
+      tags:
+        - Elements
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindElementRequest'
+            examples:
+              FindElementRequestExample:
+                summary: Default findElement request
+                x-microcks-default: true
+                value:
+                  using: accessibility id
+                  value: Login Button
+      responses:
+        '200':
+          description: Element found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ElementResponse'
+              examples:
+                FindElement200Example:
+                  summary: Default findElement 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                      ELEMENT: 1234567890
+                      element-6066-11e4-a52e-4f735466cecf: 1234567890
+        '404':
+          description: Element not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/elements:
+    post:
+      operationId: findElements
+      summary: Appium Find Elements
+      description: Finds all elements matching a given locator strategy and selector.
+      tags:
+        - Elements
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindElementRequest'
+      responses:
+        '200':
+          description: Elements found (may be empty array)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ElementsResponse'
+              examples:
+                FindElements200Example:
+                  summary: Default findElements 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                      - ELEMENT: 1234567890
+                        element-6066-11e4-a52e-4f735466cecf: 1234567890
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/element/{elementId}/click:
+    post:
+      operationId: click
+      summary: Appium Click Element
+      description: Clicks on the specified element.
+      tags:
+        - Elements
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+        - $ref: '#/components/parameters/ElementId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Element clicked successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                Click200Example:
+                  summary: Default click 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/element/{elementId}/value:
+    post:
+      operationId: setValue
+      summary: Appium Send Keys to Element
+      description: Sends text input to the specified element.
+      tags:
+        - Elements
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+        - $ref: '#/components/parameters/ElementId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - text
+              properties:
+                text:
+                  type: string
+                  description: Text to send to the element
+                  example: Hello World
+      responses:
+        '200':
+          description: Text sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                SetValue200Example:
+                  summary: Default setValue 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/element/{elementId}/text:
+    get:
+      operationId: getText
+      summary: Appium Get Element Text
+      description: Returns the visible text of the specified element.
+      tags:
+        - Elements
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+        - $ref: '#/components/parameters/ElementId'
+      responses:
+        '200':
+          description: Element text returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetText200Example:
+                  summary: Default getText 200 response
+                  x-microcks-default: true
+                  value:
+                    value: Login
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/element/{elementId}/screenshot:
+    get:
+      operationId: getElementScreenshot
+      summary: Appium Take Element Screenshot
+      description: Returns a base64-encoded PNG screenshot of the specified element.
+      tags:
+        - Screenshots
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+        - $ref: '#/components/parameters/ElementId'
+      responses:
+        '200':
+          description: Element screenshot returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetElementScreenshot200Example:
+                  summary: Default getElementScreenshot 200 response
+                  x-microcks-default: true
+                  value:
+                    value: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/source:
+    get:
+      operationId: getPageSource
+      summary: Appium Get Page Source
+      description: Returns the XML source of the current app screen or browser page.
+      tags:
+        - Elements
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Page source returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetPageSource200Example:
+                  summary: Default getPageSource 200 response
+                  x-microcks-default: true
+                  value:
+                    value: '<hierarchy rotation="0"><android.widget.FrameLayout /></hierarchy>'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/actions:
+    post:
+      operationId: performActions
+      summary: Appium Perform Actions
+      description: Performs a sequence of input actions (touch, pointer, keyboard) as defined by the W3C Actions specification.
+      tags:
+        - Actions
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActionsRequest'
+            examples:
+              PerformActionsRequestExample:
+                summary: Default performActions request
+                x-microcks-default: true
+                value:
+                  actions:
+                    - type: pointer
+                      id: finger1
+                      parameters:
+                        pointerType: touch
+                      actions:
+                        - type: pointerMove
+                          duration: 0
+                          x: 100
+                          y: 200
+                        - type: pointerDown
+                          button: 0
+                        - type: pointerUp
+                          button: 0
+      responses:
+        '200':
+          description: Actions performed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                PerformActions200Example:
+                  summary: Default performActions 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: releaseActions
+      summary: Appium Release Actions
+      description: Releases all keys and pointer buttons currently held down.
+      tags:
+        - Actions
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Actions released successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                ReleaseActions200Example:
+                  summary: Default releaseActions 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/alert/dismiss:
+    post:
+      operationId: dismissAlert
+      summary: Appium Dismiss Alert
+      description: Dismisses the currently displayed alert dialog.
+      tags:
+        - Alerts
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Alert dismissed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                DismissAlert200Example:
+                  summary: Default dismissAlert 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/alert/accept:
+    post:
+      operationId: acceptAlert
+      summary: Appium Accept Alert
+      description: Accepts the currently displayed alert dialog.
+      tags:
+        - Alerts
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Alert accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                AcceptAlert200Example:
+                  summary: Default acceptAlert 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/cookie:
+    get:
+      operationId: getCookies
+      summary: Appium Get All Cookies
+      description: Returns all cookies visible to the current page.
+      tags:
+        - Cookies
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Cookies returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CookiesResponse'
+              examples:
+                GetCookies200Example:
+                  summary: Default getCookies 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                      - name: session
+                        value: abc123
+                        domain: example.com
+                        path: /
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/appium/settings:
+    get:
+      operationId: getSettings
+      summary: Appium Get Session Settings
+      description: Returns the current Appium settings for the session.
+      tags:
+        - Appium Session
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Settings returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingsResponse'
+              examples:
+                GetSettings200Example:
+                  summary: Default getSettings 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                      waitForIdleTimeout: 10000
+                      shouldUseCompactResponses: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: updateSettings
+      summary: Appium Update Session Settings
+      description: Updates Appium settings for the current session.
+      tags:
+        - Appium Session
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - settings
+              properties:
+                settings:
+                  type: object
+                  description: Key-value pairs of Appium settings to update
+                  example:
+                    waitForIdleTimeout: 10000
+      responses:
+        '200':
+          description: Settings updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                UpdateSettings200Example:
+                  summary: Default updateSettings 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/appium/device/activate_app:
+    post:
+      operationId: activateApp
+      summary: Appium Activate App
+      description: Brings the specified app to the foreground. The app must already be installed.
+      tags:
+        - Appium Device
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppIdRequest'
+            examples:
+              ActivateAppRequestExample:
+                summary: Default activateApp request
+                x-microcks-default: true
+                value:
+                  appId: com.example.app
+      responses:
+        '200':
+          description: App activated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                ActivateApp200Example:
+                  summary: Default activateApp 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/appium/device/terminate_app:
+    post:
+      operationId: terminateApp
+      summary: Appium Terminate App
+      description: Terminates the specified app if it is running.
+      tags:
+        - Appium Device
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppIdRequest'
+            examples:
+              TerminateAppRequestExample:
+                summary: Default terminateApp request
+                x-microcks-default: true
+                value:
+                  appId: com.example.app
+      responses:
+        '200':
+          description: App terminated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanValueResponse'
+              examples:
+                TerminateApp200Example:
+                  summary: Default terminateApp 200 response
+                  x-microcks-default: true
+                  value:
+                    value: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/appium/device/install_app:
+    post:
+      operationId: installApp
+      summary: Appium Install App
+      description: Installs the app from the given path on the device.
+      tags:
+        - Appium Device
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - appPath
+              properties:
+                appPath:
+                  type: string
+                  description: Path to the app to install (local path or URL)
+                  example: /path/to/app.apk
+                options:
+                  type: object
+                  description: Platform-specific installation options
+      responses:
+        '200':
+          description: App installed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                InstallApp200Example:
+                  summary: Default installApp 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/appium/device/remove_app:
+    post:
+      operationId: removeApp
+      summary: Appium Remove App
+      description: Uninstalls the specified app from the device.
+      tags:
+        - Appium Device
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppIdRequest'
+      responses:
+        '200':
+          description: App removed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanValueResponse'
+              examples:
+                RemoveApp200Example:
+                  summary: Default removeApp 200 response
+                  x-microcks-default: true
+                  value:
+                    value: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/appium/device/is_keyboard_shown:
+    get:
+      operationId: isKeyboardShown
+      summary: Appium Is Keyboard Shown
+      description: Returns whether the soft keyboard is currently visible on the device.
+      tags:
+        - Appium Device
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Keyboard visibility state returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanValueResponse'
+              examples:
+                IsKeyboardShown200Example:
+                  summary: Default isKeyboardShown 200 response
+                  x-microcks-default: true
+                  value:
+                    value: false
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/appium/device/system_time:
+    get:
+      operationId: getDeviceTime
+      summary: Appium Get Device Time
+      description: Returns the current date and time from the device.
+      tags:
+        - Appium Device
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Device time returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetDeviceTime200Example:
+                  summary: Default getDeviceTime 200 response
+                  x-microcks-default: true
+                  value:
+                    value: '2025-03-15T14:30:00Z'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/orientation:
+    get:
+      operationId: getOrientation
+      summary: Appium Get Orientation
+      description: Returns the current device orientation (LANDSCAPE or PORTRAIT).
+      tags:
+        - Appium Device
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Device orientation returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetOrientation200Example:
+                  summary: Default getOrientation 200 response
+                  x-microcks-default: true
+                  value:
+                    value: PORTRAIT
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: setOrientation
+      summary: Appium Set Orientation
+      description: Sets the device orientation to LANDSCAPE or PORTRAIT.
+      tags:
+        - Appium Device
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - orientation
+              properties:
+                orientation:
+                  type: string
+                  enum:
+                    - LANDSCAPE
+                    - PORTRAIT
+                  description: The desired device orientation
+                  example: LANDSCAPE
+      responses:
+        '200':
+          description: Orientation set successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                SetOrientation200Example:
+                  summary: Default setOrientation 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/context:
+    get:
+      operationId: getCurrentContext
+      summary: Appium Get Current Context
+      description: Returns the current context (NATIVE_APP or a webview name).
+      tags:
+        - Appium Session
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Current context returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetCurrentContext200Example:
+                  summary: Default getCurrentContext 200 response
+                  x-microcks-default: true
+                  value:
+                    value: NATIVE_APP
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: setContext
+      summary: Appium Set Context
+      description: Switches to a different context (NATIVE_APP or a webview).
+      tags:
+        - Appium Session
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: The context name to switch to
+                  example: WEBVIEW_com.example.app
+      responses:
+        '200':
+          description: Context switched successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                SetContext200Example:
+                  summary: Default setContext 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/contexts:
+    get:
+      operationId: getContexts
+      summary: Appium Get Available Contexts
+      description: Returns a list of all available contexts in the current session.
+      tags:
+        - Appium Session
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Available contexts returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayValueResponse'
+              examples:
+                GetContexts200Example:
+                  summary: Default getContexts 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                      - NATIVE_APP
+                      - WEBVIEW_com.example.app
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+    ElementId:
+      name: elementId
+      in: path
+      required: true
+      description: The unique element identifier within the session
+      schema:
+        type: string
+      example: '1234567890'
+  schemas:
+    StatusResponse:
+      title: StatusResponse
+      description: Appium server status response
+      type: object
+      properties:
+        value:
+          type: object
+          description: Status object
+          properties:
+            ready:
+              type: boolean
+              description: Whether the server is ready to accept connections
+              example: true
+            message:
+              type: string
+              description: Human-readable status message
+              example: The server is ready to accept new connections
+            build:
+              type: object
+              description: Server build information
+              properties:
+                version:
+                  type: string
+                  description: Appium version
+                  example: 2.5.0
+    CreateSessionRequest:
+      title: CreateSessionRequest
+      description: Request body for creating a new WebDriver session
+      type: object
+      properties:
+        capabilities:
+          type: object
+          description: W3C capabilities object with alwaysMatch and firstMatch
+          properties:
+            alwaysMatch:
+              type: object
+              description: Capabilities that must be matched exactly
+            firstMatch:
+              type: array
+              description: List of capabilities to try matching in order
+              items:
+                type: object
+    SessionResponse:
+      title: SessionResponse
+      description: Response from session creation
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: The unique session identifier
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        value:
+          type: object
+          description: Session capabilities and metadata
+    SessionsListResponse:
+      title: SessionsListResponse
+      description: List of active Appium sessions
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionInfo'
+    SessionInfo:
+      title: SessionInfo
+      description: Information about a single active session
+      type: object
+      properties:
+        id:
+          type: string
+          description: Session identifier
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        capabilities:
+          type: object
+          description: The capabilities used to create the session
+    FindElementRequest:
+      title: FindElementRequest
+      description: Request to find an element using a locator strategy
+      type: object
+      required:
+        - using
+        - value
+      properties:
+        using:
+          type: string
+          description: The element locator strategy
+          enum:
+            - accessibility id
+            - id
+            - xpath
+            - class name
+            - name
+            - css selector
+            - link text
+            - partial link text
+            - -android uiautomator
+            - -android datamatcher
+            - -ios predicate string
+            - -ios class chain
+          example: accessibility id
+        value:
+          type: string
+          description: The selector value for the locator strategy
+          example: Login Button
+    ElementResponse:
+      title: ElementResponse
+      description: Single element returned from a find operation
+      type: object
+      properties:
+        value:
+          type: object
+          description: Element reference object
+          properties:
+            ELEMENT:
+              type: string
+              description: Legacy element identifier
+              example: '1234567890'
+            element-6066-11e4-a52e-4f735466cecf:
+              type: string
+              description: W3C element identifier
+              example: '1234567890'
+    ElementsResponse:
+      title: ElementsResponse
+      description: Multiple elements returned from a find operation
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            type: object
+            properties:
+              ELEMENT:
+                type: string
+                example: '1234567890'
+              element-6066-11e4-a52e-4f735466cecf:
+                type: string
+                example: '1234567890'
+    ActionsRequest:
+      title: ActionsRequest
+      description: W3C Actions request body
+      type: object
+      required:
+        - actions
+      properties:
+        actions:
+          type: array
+          description: List of action sequences
+          items:
+            $ref: '#/components/schemas/ActionSequence'
+    ActionSequence:
+      title: ActionSequence
+      description: A sequence of input actions for a single input source
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - pointer
+            - key
+            - wheel
+            - none
+          description: The type of input source
+          example: pointer
+        id:
+          type: string
+          description: Unique identifier for this input source
+          example: finger1
+        parameters:
+          type: object
+          description: Input source parameters (e.g. pointerType)
+        actions:
+          type: array
+          description: List of individual action objects
+          items:
+            type: object
+    AppIdRequest:
+      title: AppIdRequest
+      description: Request body identifying an app by package name or bundle ID
+      type: object
+      properties:
+        appId:
+          type: string
+          description: App package name (Android) or bundle ID (iOS)
+          example: com.example.app
+        bundleId:
+          type: string
+          description: iOS bundle identifier
+          example: com.example.app
+    CookiesResponse:
+      title: CookiesResponse
+      description: List of browser cookies
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cookie'
+    Cookie:
+      title: Cookie
+      description: Browser cookie object
+      type: object
+      properties:
+        name:
+          type: string
+          description: Cookie name
+          example: session
+        value:
+          type: string
+          description: Cookie value
+          example: abc123
+        domain:
+          type: string
+          description: Cookie domain
+          example: example.com
+        path:
+          type: string
+          description: Cookie path
+          example: /
+        httpOnly:
+          type: boolean
+          description: Whether the cookie is HTTP-only
+          example: false
+        secure:
+          type: boolean
+          description: Whether the cookie requires HTTPS
+          example: false
+    SettingsResponse:
+      title: SettingsResponse
+      description: Appium session settings
+      type: object
+      properties:
+        value:
+          type: object
+          description: Key-value map of current settings
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          nullable: true
+          description: Always null for commands that have no return value
+    StringValueResponse:
+      title: StringValueResponse
+      description: Standard response with a string value
+      type: object
+      properties:
+        value:
+          type: string
+          description: The returned string value
+    BooleanValueResponse:
+      title: BooleanValueResponse
+      description: Standard response with a boolean value
+      type: object
+      properties:
+        value:
+          type: boolean
+          description: The returned boolean value
+    ArrayValueResponse:
+      title: ArrayValueResponse
+      description: Standard response with an array value
+      type: object
+      properties:
+        value:
+          type: array
+          description: The returned array value
+          items:
+            type: string
+    ErrorResponse:
+      title: ErrorResponse
+      description: WebDriver error response
+      type: object
+      properties:
+        value:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code
+              example: no such element
+            message:
+              type: string
+              description: Human-readable error message
+              example: An element could not be located on the page using the given search parameters.
+            stacktrace:
+              type: string
+              description: Stack trace for debugging

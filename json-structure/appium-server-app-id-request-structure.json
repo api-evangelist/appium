@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/appium/refs/heads/main/json-structure/appium-server-app-id-request-structure.json",
+  "name": "AppIdRequest",
+  "description": "Request body identifying an app by package name or bundle ID",
+  "type": "object",
+  "properties": {
+    "appId": {
+      "type": "string",
+      "description": "App package name (Android) or bundle ID (iOS)",
+      "example": "com.example.app"
+    },
+    "bundleId": {
+      "type": "string",
+      "description": "iOS bundle identifier",
+      "example": "com.example.app"
+    },
+    "options": {
+      "type": "object",
+      "description": "Platform-specific options"
+    }
+  }
+}

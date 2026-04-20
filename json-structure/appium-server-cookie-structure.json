@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/appium/refs/heads/main/json-structure/appium-server-cookie-structure.json",
+  "name": "Cookie",
+  "description": "Browser cookie object from a WebDriver session",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Cookie name",
+      "example": "session"
+    },
+    "value": {
+      "type": "string",
+      "description": "Cookie value",
+      "example": "abc123"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Cookie domain",
+      "example": "example.com"
+    },
+    "path": {
+      "type": "string",
+      "description": "Cookie path",
+      "example": "/"
+    },
+    "httpOnly": {
+      "type": "boolean",
+      "description": "Whether the cookie is HTTP-only",
+      "example": false
+    },
+    "secure": {
+      "type": "boolean",
+      "description": "Whether the cookie requires HTTPS",
+      "example": false
+    },
+    "expiry": {
+      "type": "int32",
+      "description": "Cookie expiry as Unix timestamp"
+    }
+  }
+}

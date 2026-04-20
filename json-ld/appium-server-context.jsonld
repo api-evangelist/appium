@@ -1,0 +1,77 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "appium": "https://appium.io/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "FindElementRequest": "appium:FindElementRequest",
+    "using": {
+      "@id": "appium:using",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "appium:value",
+      "@type": "xsd:string"
+    },
+    "ErrorResponse": "appium:ErrorResponse",
+    "ActionSequence": "appium:ActionSequence",
+    "type": {
+      "@id": "appium:type",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "appium:id",
+      "@type": "xsd:string"
+    },
+    "parameters": {
+      "@id": "appium:parameters",
+      "@type": "@id"
+    },
+    "actions": {
+      "@id": "appium:actions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "SessionInfo": "appium:SessionInfo",
+    "capabilities": {
+      "@id": "appium:capabilities",
+      "@type": "@id"
+    },
+    "AppIdRequest": "appium:AppIdRequest",
+    "appId": {
+      "@id": "appium:appId",
+      "@type": "xsd:string"
+    },
+    "bundleId": {
+      "@id": "appium:bundleId",
+      "@type": "xsd:string"
+    },
+    "options": {
+      "@id": "appium:options",
+      "@type": "@id"
+    },
+    "Cookie": "appium:Cookie",
+    "name": "schema:name",
+    "domain": {
+      "@id": "appium:domain",
+      "@type": "xsd:string"
+    },
+    "path": {
+      "@id": "appium:path",
+      "@type": "xsd:string"
+    },
+    "httpOnly": {
+      "@id": "appium:httpOnly",
+      "@type": "xsd:boolean"
+    },
+    "secure": {
+      "@id": "appium:secure",
+      "@type": "xsd:boolean"
+    },
+    "expiry": {
+      "@id": "appium:expiry",
+      "@type": "xsd:integer"
+    }
+  }
+}
