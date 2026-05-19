@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Appium Server API — Cookies
+  description: 'Appium Server API — Cookies. 1 operations. Lead operation: Appium Get All Cookies. Self-contained Naftiko
+    capability covering one Appium business surface.'
+  tags:
+  - Appium
+  - Cookies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPIUM_API_KEY: APPIUM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: server-cookies
+    baseUri: http://localhost:4723
+    description: Appium Server API — Cookies business capability. Self-contained, no shared references.
+    resources:
+    - name: session-sessionId-cookie
+      path: /session/{sessionId}/cookie
+      operations:
+      - name: getcookies
+        method: GET
+        description: Appium Get All Cookies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: server-cookies-rest
+    port: 8080
+    description: REST adapter for Appium Server API — Cookies. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/session/{sessionid}/cookie
+      name: session-sessionid-cookie
+      description: REST surface for session-sessionId-cookie.
+      operations:
+      - method: GET
+        name: getcookies
+        description: Appium Get All Cookies
+        call: server-cookies.getcookies
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: server-cookies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Appium Server API — Cookies. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: appium-get-all-cookies
+      description: Appium Get All Cookies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-cookies.getcookies
+      outputParameters:
+      - type: object
+        mapping: $.

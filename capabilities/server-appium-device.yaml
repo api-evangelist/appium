@@ -1,0 +1,334 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Appium Server API — Appium Device
+  description: 'Appium Server API — Appium Device. 8 operations. Lead operation: Appium Activate App. Self-contained Naftiko
+    capability covering one Appium business surface.'
+  tags:
+  - Appium
+  - Appium Device
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPIUM_API_KEY: APPIUM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: server-appium-device
+    baseUri: http://localhost:4723
+    description: Appium Server API — Appium Device business capability. Self-contained, no shared references.
+    resources:
+    - name: session-sessionId-appium-device-activate_app
+      path: /session/{sessionId}/appium/device/activate_app
+      operations:
+      - name: activateapp
+        method: POST
+        description: Appium Activate App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: session-sessionId-appium-device-install_app
+      path: /session/{sessionId}/appium/device/install_app
+      operations:
+      - name: installapp
+        method: POST
+        description: Appium Install App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: session-sessionId-appium-device-is_keyboard_shown
+      path: /session/{sessionId}/appium/device/is_keyboard_shown
+      operations:
+      - name: iskeyboardshown
+        method: GET
+        description: Appium Is Keyboard Shown
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: session-sessionId-appium-device-remove_app
+      path: /session/{sessionId}/appium/device/remove_app
+      operations:
+      - name: removeapp
+        method: POST
+        description: Appium Remove App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: session-sessionId-appium-device-system_time
+      path: /session/{sessionId}/appium/device/system_time
+      operations:
+      - name: getdevicetime
+        method: GET
+        description: Appium Get Device Time
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: session-sessionId-appium-device-terminate_app
+      path: /session/{sessionId}/appium/device/terminate_app
+      operations:
+      - name: terminateapp
+        method: POST
+        description: Appium Terminate App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: session-sessionId-orientation
+      path: /session/{sessionId}/orientation
+      operations:
+      - name: getorientation
+        method: GET
+        description: Appium Get Orientation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: setorientation
+        method: POST
+        description: Appium Set Orientation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: server-appium-device-rest
+    port: 8080
+    description: REST adapter for Appium Server API — Appium Device. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/session/{sessionid}/appium/device/activate-app
+      name: session-sessionid-appium-device-activate-app
+      description: REST surface for session-sessionId-appium-device-activate_app.
+      operations:
+      - method: POST
+        name: activateapp
+        description: Appium Activate App
+        call: server-appium-device.activateapp
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session/{sessionid}/appium/device/install-app
+      name: session-sessionid-appium-device-install-app
+      description: REST surface for session-sessionId-appium-device-install_app.
+      operations:
+      - method: POST
+        name: installapp
+        description: Appium Install App
+        call: server-appium-device.installapp
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session/{sessionid}/appium/device/is-keyboard-shown
+      name: session-sessionid-appium-device-is-keyboard-shown
+      description: REST surface for session-sessionId-appium-device-is_keyboard_shown.
+      operations:
+      - method: GET
+        name: iskeyboardshown
+        description: Appium Is Keyboard Shown
+        call: server-appium-device.iskeyboardshown
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session/{sessionid}/appium/device/remove-app
+      name: session-sessionid-appium-device-remove-app
+      description: REST surface for session-sessionId-appium-device-remove_app.
+      operations:
+      - method: POST
+        name: removeapp
+        description: Appium Remove App
+        call: server-appium-device.removeapp
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session/{sessionid}/appium/device/system-time
+      name: session-sessionid-appium-device-system-time
+      description: REST surface for session-sessionId-appium-device-system_time.
+      operations:
+      - method: GET
+        name: getdevicetime
+        description: Appium Get Device Time
+        call: server-appium-device.getdevicetime
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session/{sessionid}/appium/device/terminate-app
+      name: session-sessionid-appium-device-terminate-app
+      description: REST surface for session-sessionId-appium-device-terminate_app.
+      operations:
+      - method: POST
+        name: terminateapp
+        description: Appium Terminate App
+        call: server-appium-device.terminateapp
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session/{sessionid}/orientation
+      name: session-sessionid-orientation
+      description: REST surface for session-sessionId-orientation.
+      operations:
+      - method: GET
+        name: getorientation
+        description: Appium Get Orientation
+        call: server-appium-device.getorientation
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: setorientation
+        description: Appium Set Orientation
+        call: server-appium-device.setorientation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: server-appium-device-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Appium Server API — Appium Device. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: appium-activate-app
+      description: Appium Activate App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: server-appium-device.activateapp
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: appium-install-app
+      description: Appium Install App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: server-appium-device.installapp
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: appium-is-keyboard-shown
+      description: Appium Is Keyboard Shown
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-appium-device.iskeyboardshown
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: appium-remove-app
+      description: Appium Remove App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: server-appium-device.removeapp
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: appium-get-device-time
+      description: Appium Get Device Time
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-appium-device.getdevicetime
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: appium-terminate-app
+      description: Appium Terminate App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: server-appium-device.terminateapp
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: appium-get-orientation
+      description: Appium Get Orientation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-appium-device.getorientation
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: appium-set-orientation
+      description: Appium Set Orientation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: server-appium-device.setorientation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

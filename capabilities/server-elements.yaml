@@ -1,0 +1,267 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Appium Server API — Elements
+  description: 'Appium Server API — Elements. 6 operations. Lead operation: Appium Find Element. Self-contained Naftiko capability
+    covering one Appium business surface.'
+  tags:
+  - Appium
+  - Elements
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPIUM_API_KEY: APPIUM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: server-elements
+    baseUri: http://localhost:4723
+    description: Appium Server API — Elements business capability. Self-contained, no shared references.
+    resources:
+    - name: session-sessionId-element
+      path: /session/{sessionId}/element
+      operations:
+      - name: findelement
+        method: POST
+        description: Appium Find Element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: session-sessionId-element-elementId-click
+      path: /session/{sessionId}/element/{elementId}/click
+      operations:
+      - name: click
+        method: POST
+        description: Appium Click Element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: session-sessionId-element-elementId-text
+      path: /session/{sessionId}/element/{elementId}/text
+      operations:
+      - name: gettext
+        method: GET
+        description: Appium Get Element Text
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: session-sessionId-element-elementId-value
+      path: /session/{sessionId}/element/{elementId}/value
+      operations:
+      - name: setvalue
+        method: POST
+        description: Appium Send Keys to Element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: session-sessionId-elements
+      path: /session/{sessionId}/elements
+      operations:
+      - name: findelements
+        method: POST
+        description: Appium Find Elements
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: session-sessionId-source
+      path: /session/{sessionId}/source
+      operations:
+      - name: getpagesource
+        method: GET
+        description: Appium Get Page Source
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: server-elements-rest
+    port: 8080
+    description: REST adapter for Appium Server API — Elements. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/session/{sessionid}/element
+      name: session-sessionid-element
+      description: REST surface for session-sessionId-element.
+      operations:
+      - method: POST
+        name: findelement
+        description: Appium Find Element
+        call: server-elements.findelement
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session/{sessionid}/element/{elementid}/click
+      name: session-sessionid-element-elementid-click
+      description: REST surface for session-sessionId-element-elementId-click.
+      operations:
+      - method: POST
+        name: click
+        description: Appium Click Element
+        call: server-elements.click
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session/{sessionid}/element/{elementid}/text
+      name: session-sessionid-element-elementid-text
+      description: REST surface for session-sessionId-element-elementId-text.
+      operations:
+      - method: GET
+        name: gettext
+        description: Appium Get Element Text
+        call: server-elements.gettext
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session/{sessionid}/element/{elementid}/value
+      name: session-sessionid-element-elementid-value
+      description: REST surface for session-sessionId-element-elementId-value.
+      operations:
+      - method: POST
+        name: setvalue
+        description: Appium Send Keys to Element
+        call: server-elements.setvalue
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session/{sessionid}/elements
+      name: session-sessionid-elements
+      description: REST surface for session-sessionId-elements.
+      operations:
+      - method: POST
+        name: findelements
+        description: Appium Find Elements
+        call: server-elements.findelements
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session/{sessionid}/source
+      name: session-sessionid-source
+      description: REST surface for session-sessionId-source.
+      operations:
+      - method: GET
+        name: getpagesource
+        description: Appium Get Page Source
+        call: server-elements.getpagesource
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: server-elements-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Appium Server API — Elements. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: appium-find-element
+      description: Appium Find Element
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: server-elements.findelement
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: appium-click-element
+      description: Appium Click Element
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: server-elements.click
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: appium-get-element-text
+      description: Appium Get Element Text
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-elements.gettext
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: appium-send-keys-element
+      description: Appium Send Keys to Element
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: server-elements.setvalue
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: appium-find-elements
+      description: Appium Find Elements
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: server-elements.findelements
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: appium-get-page-source
+      description: Appium Get Page Source
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: server-elements.getpagesource
+      outputParameters:
+      - type: object
+        mapping: $.
