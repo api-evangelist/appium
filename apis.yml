@@ -7,7 +7,7 @@ description: >-
   clients, and plugins.
 image: https://appium.io/docs/en/latest/assets/images/appium-logo.png
 created: '2024-01-15'
-modified: '2026-04-19'
+modified: '2026-05-19'
 specificationVersion: '0.18'
 url: https://appium.io/apis.json
 apis:
@@ -201,3 +201,9 @@ common:
         description: JavaScript test automation framework with built-in Appium support
       - name: Selenium Grid
         description: Distributed test execution grid compatible with Appium sessions
+  - name: MCP Server
+    url: https://github.com/appium/appium-mcp
+    type: MCPServer
+  - name: Agent Skills
+    url: https://github.com/appium/skills
+    type: AgentSkill
