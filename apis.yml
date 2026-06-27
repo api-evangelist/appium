@@ -48,25 +48,25 @@ apis:
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
     title: Error Response Schema
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/server-actions.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/server-alerts.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/server-appium-device.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/server-appium-session.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/server-cookies.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/server-elements.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/server-navigation.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/server-screenshots.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/server-server.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/server-sessions.yaml
 - name: Appium Inspector
   description: Standalone GUI inspector for mobile apps that communicates with an Appium server, enabling visual element inspection
@@ -81,7 +81,7 @@ apis:
   properties:
   - type: GitHubRepository
     url: https://github.com/appium/appium-inspector
-  - type: SDK
+  - type: SDKs
     url: https://github.com/appium/appium-inspector/releases
     title: Desktop App Downloads
 - name: Appium UiAutomator2 Driver
@@ -147,16 +147,16 @@ common:
   url: https://www.youtube.com/c/AppiumConf
 - type: ChangeLog
   url: https://github.com/appium/appium/blob/master/CHANGELOG.md
-- type: SDK
+- type: SDKs
   url: https://github.com/appium/python-client
   title: Python Client
-- type: SDK
+- type: SDKs
   url: https://github.com/appium/java-client
   title: Java Client
-- type: SDK
+- type: SDKs
   url: https://github.com/appium/ruby_lib_core
   title: Ruby Client
-- type: SDK
+- type: SDKs
   url: https://github.com/appium/dotnet-client
   title: .NET Client
 - type: Tools
@@ -215,4 +215,4 @@ common:
   type: MCPServer
 - name: Agent Skills
   url: https://github.com/appium/skills
-  type: AgentSkill
+  type: AgentSkills
