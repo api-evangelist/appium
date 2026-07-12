@@ -129,6 +129,8 @@ tags:
 - Test Automation
 - WebDriver
 common:
+- type: DomainSecurity
+  url: security/appium-domain-security.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/appium
 - type: GettingStarted
