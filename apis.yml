@@ -129,6 +129,8 @@ tags:
 - Test Automation
 - WebDriver
 common:
+- type: AgenticAccess
+  url: agentic-access/appium-agentic-access.yml
 - type: DomainSecurity
   url: security/appium-domain-security.yml
 - type: LinkedIn
