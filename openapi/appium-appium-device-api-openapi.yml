@@ -1,0 +1,328 @@
+openapi: 3.0.3
+info:
+  title: Appium Server Actions Appium Device API
+  description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    name: Appium Community
+    url: https://discuss.appium.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:4723
+  description: Local Appium server (default port)
+tags:
+- name: Appium Device
+  description: Appium-specific device commands (app management, files, keyboard)
+paths:
+  /session/{sessionId}/appium/device/activate_app:
+    post:
+      operationId: activateApp
+      summary: Appium Activate App
+      description: Brings the specified app to the foreground. The app must already be installed.
+      tags:
+      - Appium Device
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppIdRequest'
+            examples:
+              ActivateAppRequestExample:
+                summary: Default activateApp request
+                x-microcks-default: true
+                value:
+                  appId: com.example.app
+      responses:
+        '200':
+          description: App activated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                ActivateApp200Example:
+                  summary: Default activateApp 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/appium/device/terminate_app:
+    post:
+      operationId: terminateApp
+      summary: Appium Terminate App
+      description: Terminates the specified app if it is running.
+      tags:
+      - Appium Device
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppIdRequest'
+            examples:
+              TerminateAppRequestExample:
+                summary: Default terminateApp request
+                x-microcks-default: true
+                value:
+                  appId: com.example.app
+      responses:
+        '200':
+          description: App terminated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanValueResponse'
+              examples:
+                TerminateApp200Example:
+                  summary: Default terminateApp 200 response
+                  x-microcks-default: true
+                  value:
+                    value: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/appium/device/install_app:
+    post:
+      operationId: installApp
+      summary: Appium Install App
+      description: Installs the app from the given path on the device.
+      tags:
+      - Appium Device
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - appPath
+              properties:
+                appPath:
+                  type: string
+                  description: Path to the app to install (local path or URL)
+                  example: /path/to/app.apk
+                options:
+                  type: object
+                  description: Platform-specific installation options
+      responses:
+        '200':
+          description: App installed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                InstallApp200Example:
+                  summary: Default installApp 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/appium/device/remove_app:
+    post:
+      operationId: removeApp
+      summary: Appium Remove App
+      description: Uninstalls the specified app from the device.
+      tags:
+      - Appium Device
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppIdRequest'
+      responses:
+        '200':
+          description: App removed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanValueResponse'
+              examples:
+                RemoveApp200Example:
+                  summary: Default removeApp 200 response
+                  x-microcks-default: true
+                  value:
+                    value: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/appium/device/is_keyboard_shown:
+    get:
+      operationId: isKeyboardShown
+      summary: Appium Is Keyboard Shown
+      description: Returns whether the soft keyboard is currently visible on the device.
+      tags:
+      - Appium Device
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Keyboard visibility state returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanValueResponse'
+              examples:
+                IsKeyboardShown200Example:
+                  summary: Default isKeyboardShown 200 response
+                  x-microcks-default: true
+                  value:
+                    value: false
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/appium/device/system_time:
+    get:
+      operationId: getDeviceTime
+      summary: Appium Get Device Time
+      description: Returns the current date and time from the device.
+      tags:
+      - Appium Device
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Device time returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetDeviceTime200Example:
+                  summary: Default getDeviceTime 200 response
+                  x-microcks-default: true
+                  value:
+                    value: '2025-03-15T14:30:00Z'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/orientation:
+    get:
+      operationId: getOrientation
+      summary: Appium Get Orientation
+      description: Returns the current device orientation (LANDSCAPE or PORTRAIT).
+      tags:
+      - Appium Device
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Device orientation returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetOrientation200Example:
+                  summary: Default getOrientation 200 response
+                  x-microcks-default: true
+                  value:
+                    value: PORTRAIT
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: setOrientation
+      summary: Appium Set Orientation
+      description: Sets the device orientation to LANDSCAPE or PORTRAIT.
+      tags:
+      - Appium Device
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - orientation
+              properties:
+                orientation:
+                  type: string
+                  enum:
+                  - LANDSCAPE
+                  - PORTRAIT
+                  description: The desired device orientation
+                  example: LANDSCAPE
+      responses:
+        '200':
+          description: Orientation set successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                SetOrientation200Example:
+                  summary: Default setOrientation 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    BooleanValueResponse:
+      title: BooleanValueResponse
+      description: Standard response with a boolean value
+      type: object
+      properties:
+        value:
+          type: boolean
+          description: The returned boolean value
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          nullable: true
+          description: Always null for commands that have no return value
+    StringValueResponse:
+      title: StringValueResponse
+      description: Standard response with a string value
+      type: object
+      properties:
+        value:
+          type: string
+          description: The returned string value
+    AppIdRequest:
+      title: AppIdRequest
+      description: Request body identifying an app by package name or bundle ID
+      type: object
+      properties:
+        appId:
+          type: string
+          description: App package name (Android) or bundle ID (iOS)
+          example: com.example.app
+        bundleId:
+          type: string
+          description: iOS bundle identifier
+          example: com.example.app
+  parameters:
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890

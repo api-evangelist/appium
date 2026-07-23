@@ -1,0 +1,100 @@
+openapi: 3.0.3
+info:
+  title: Appium Server Actions Alerts API
+  description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    name: Appium Community
+    url: https://discuss.appium.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:4723
+  description: Local Appium server (default port)
+tags:
+- name: Alerts
+  description: Dialog and alert handling
+paths:
+  /session/{sessionId}/alert/dismiss:
+    post:
+      operationId: dismissAlert
+      summary: Appium Dismiss Alert
+      description: Dismisses the currently displayed alert dialog.
+      tags:
+      - Alerts
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Alert dismissed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                DismissAlert200Example:
+                  summary: Default dismissAlert 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/alert/accept:
+    post:
+      operationId: acceptAlert
+      summary: Appium Accept Alert
+      description: Accepts the currently displayed alert dialog.
+      tags:
+      - Alerts
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Alert accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                AcceptAlert200Example:
+                  summary: Default acceptAlert 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+  schemas:
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          nullable: true
+          description: Always null for commands that have no return value

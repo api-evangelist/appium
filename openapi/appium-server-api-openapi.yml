@@ -1,0 +1,120 @@
+openapi: 3.0.3
+info:
+  title: Appium Actions Server API
+  description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    name: Appium Community
+    url: https://discuss.appium.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:4723
+  description: Local Appium server (default port)
+tags:
+- name: Server
+  description: Server status and session listing
+paths:
+  /status:
+    get:
+      operationId: getStatus
+      summary: Appium Get Server Status
+      description: Returns the current status of the Appium server including readiness and metadata.
+      tags:
+      - Server
+      responses:
+        '200':
+          description: Server status returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+              examples:
+                GetStatus200Example:
+                  summary: Default getStatus 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                      ready: true
+                      message: The server is ready to accept new connections
+                      build:
+                        version: 2.5.0
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /appium/sessions:
+    get:
+      operationId: getAppiumSessions
+      summary: Appium Get All Sessions
+      description: Returns a list of all currently active Appium sessions.
+      tags:
+      - Server
+      responses:
+        '200':
+          description: Sessions list returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionsListResponse'
+              examples:
+                GetAppiumSessions200Example:
+                  summary: Default getAppiumSessions 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                      capabilities:
+                        platformName: Android
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    SessionsListResponse:
+      title: SessionsListResponse
+      description: List of active Appium sessions
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionInfo'
+    StatusResponse:
+      title: StatusResponse
+      description: Appium server status response
+      type: object
+      properties:
+        value:
+          type: object
+          description: Status object
+          properties:
+            ready:
+              type: boolean
+              description: Whether the server is ready to accept connections
+              example: true
+            message:
+              type: string
+              description: Human-readable status message
+              example: The server is ready to accept new connections
+            build:
+              type: object
+              description: Server build information
+              properties:
+                version:
+                  type: string
+                  description: Appium version
+                  example: 2.5.0
+    SessionInfo:
+      title: SessionInfo
+      description: Information about a single active session
+      type: object
+      properties:
+        id:
+          type: string
+          description: Session identifier
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        capabilities:
+          type: object
+          description: The capabilities used to create the session

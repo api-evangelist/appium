@@ -1,0 +1,108 @@
+openapi: 3.0.3
+info:
+  title: Appium Server Actions Navigation API
+  description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    name: Appium Community
+    url: https://discuss.appium.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:4723
+  description: Local Appium server (default port)
+tags:
+- name: Navigation
+  description: Browser and app navigation commands
+paths:
+  /session/{sessionId}/url:
+    get:
+      operationId: getUrl
+      summary: Appium Get Current URL
+      description: Returns the URL of the current page or app context.
+      tags:
+      - Navigation
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Current URL returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetUrl200Example:
+                  summary: Default getUrl 200 response
+                  x-microcks-default: true
+                  value:
+                    value: https://example.com
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: setUrl
+      summary: Appium Navigate to URL
+      description: Navigates to a given URL or activates a deep link.
+      tags:
+      - Navigation
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url
+              properties:
+                url:
+                  type: string
+                  description: The URL to navigate to
+                  example: https://example.com
+      responses:
+        '200':
+          description: Navigation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                SetUrl200Example:
+                  summary: Default setUrl 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    StringValueResponse:
+      title: StringValueResponse
+      description: Standard response with a string value
+      type: object
+      properties:
+        value:
+          type: string
+          description: The returned string value
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          nullable: true
+          description: Always null for commands that have no return value
+  parameters:
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890

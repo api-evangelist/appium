@@ -1,0 +1,97 @@
+openapi: 3.0.3
+info:
+  title: Appium Server Actions Screenshots API
+  description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    name: Appium Community
+    url: https://discuss.appium.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:4723
+  description: Local Appium server (default port)
+tags:
+- name: Screenshots
+  description: Screenshot capture
+paths:
+  /session/{sessionId}/screenshot:
+    get:
+      operationId: getScreenshot
+      summary: Appium Take Screenshot
+      description: Returns a base64-encoded PNG screenshot of the current screen.
+      tags:
+      - Screenshots
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Screenshot returned as base64 PNG
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetScreenshot200Example:
+                  summary: Default getScreenshot 200 response
+                  x-microcks-default: true
+                  value:
+                    value: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/element/{elementId}/screenshot:
+    get:
+      operationId: getElementScreenshot
+      summary: Appium Take Element Screenshot
+      description: Returns a base64-encoded PNG screenshot of the specified element.
+      tags:
+      - Screenshots
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      - $ref: '#/components/parameters/ElementId'
+      responses:
+        '200':
+          description: Element screenshot returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetElementScreenshot200Example:
+                  summary: Default getElementScreenshot 200 response
+                  x-microcks-default: true
+                  value:
+                    value: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    StringValueResponse:
+      title: StringValueResponse
+      description: Standard response with a string value
+      type: object
+      properties:
+        value:
+          type: string
+          description: The returned string value
+  parameters:
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+    ElementId:
+      name: elementId
+      in: path
+      required: true
+      description: The unique element identifier within the session
+      schema:
+        type: string
+      example: '1234567890'

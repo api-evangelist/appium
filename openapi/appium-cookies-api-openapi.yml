@@ -1,0 +1,97 @@
+openapi: 3.0.3
+info:
+  title: Appium Server Actions Cookies API
+  description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    name: Appium Community
+    url: https://discuss.appium.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:4723
+  description: Local Appium server (default port)
+tags:
+- name: Cookies
+  description: Cookie management
+paths:
+  /session/{sessionId}/cookie:
+    get:
+      operationId: getCookies
+      summary: Appium Get All Cookies
+      description: Returns all cookies visible to the current page.
+      tags:
+      - Cookies
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Cookies returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CookiesResponse'
+              examples:
+                GetCookies200Example:
+                  summary: Default getCookies 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - name: session
+                      value: abc123
+                      domain: example.com
+                      path: /
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    CookiesResponse:
+      title: CookiesResponse
+      description: List of browser cookies
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cookie'
+    Cookie:
+      title: Cookie
+      description: Browser cookie object
+      type: object
+      properties:
+        name:
+          type: string
+          description: Cookie name
+          example: session
+        value:
+          type: string
+          description: Cookie value
+          example: abc123
+        domain:
+          type: string
+          description: Cookie domain
+          example: example.com
+        path:
+          type: string
+          description: Cookie path
+          example: /
+        httpOnly:
+          type: boolean
+          description: Whether the cookie is HTTP-only
+          example: false
+        secure:
+          type: boolean
+          description: Whether the cookie requires HTTPS
+          example: false
+  parameters:
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890

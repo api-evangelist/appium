@@ -1,0 +1,218 @@
+openapi: 3.0.3
+info:
+  title: Appium Server Actions Appium Session API
+  description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    name: Appium Community
+    url: https://discuss.appium.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:4723
+  description: Local Appium server (default port)
+tags:
+- name: Appium Session
+  description: Appium session settings and capabilities
+paths:
+  /session/{sessionId}/appium/settings:
+    get:
+      operationId: getSettings
+      summary: Appium Get Session Settings
+      description: Returns the current Appium settings for the session.
+      tags:
+      - Appium Session
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Settings returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingsResponse'
+              examples:
+                GetSettings200Example:
+                  summary: Default getSettings 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                      waitForIdleTimeout: 10000
+                      shouldUseCompactResponses: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: updateSettings
+      summary: Appium Update Session Settings
+      description: Updates Appium settings for the current session.
+      tags:
+      - Appium Session
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - settings
+              properties:
+                settings:
+                  type: object
+                  description: Key-value pairs of Appium settings to update
+                  example:
+                    waitForIdleTimeout: 10000
+      responses:
+        '200':
+          description: Settings updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                UpdateSettings200Example:
+                  summary: Default updateSettings 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/context:
+    get:
+      operationId: getCurrentContext
+      summary: Appium Get Current Context
+      description: Returns the current context (NATIVE_APP or a webview name).
+      tags:
+      - Appium Session
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Current context returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueResponse'
+              examples:
+                GetCurrentContext200Example:
+                  summary: Default getCurrentContext 200 response
+                  x-microcks-default: true
+                  value:
+                    value: NATIVE_APP
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: setContext
+      summary: Appium Set Context
+      description: Switches to a different context (NATIVE_APP or a webview).
+      tags:
+      - Appium Session
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: The context name to switch to
+                  example: WEBVIEW_com.example.app
+      responses:
+        '200':
+          description: Context switched successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                SetContext200Example:
+                  summary: Default setContext 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}/contexts:
+    get:
+      operationId: getContexts
+      summary: Appium Get Available Contexts
+      description: Returns a list of all available contexts in the current session.
+      tags:
+      - Appium Session
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Available contexts returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayValueResponse'
+              examples:
+                GetContexts200Example:
+                  summary: Default getContexts 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - NATIVE_APP
+                    - WEBVIEW_com.example.app
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          nullable: true
+          description: Always null for commands that have no return value
+    ArrayValueResponse:
+      title: ArrayValueResponse
+      description: Standard response with an array value
+      type: object
+      properties:
+        value:
+          type: array
+          description: The returned array value
+          items:
+            type: string
+    StringValueResponse:
+      title: StringValueResponse
+      description: Standard response with a string value
+      type: object
+      properties:
+        value:
+          type: string
+          description: The returned string value
+    SettingsResponse:
+      title: SettingsResponse
+      description: Appium session settings
+      type: object
+      properties:
+        value:
+          type: object
+          description: Key-value map of current settings
+  parameters:
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890

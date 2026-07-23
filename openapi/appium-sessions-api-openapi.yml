@@ -1,0 +1,157 @@
+openapi: 3.0.3
+info:
+  title: Appium Server Actions Sessions API
+  description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    name: Appium Community
+    url: https://discuss.appium.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:4723
+  description: Local Appium server (default port)
+tags:
+- name: Sessions
+  description: WebDriver session lifecycle management
+paths:
+  /session:
+    post:
+      operationId: createSession
+      summary: Appium Create Session
+      description: Creates a new WebDriver/Appium automation session with the given capabilities.
+      tags:
+      - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+            examples:
+              CreateSessionRequestExample:
+                summary: Default createSession request
+                x-microcks-default: true
+                value:
+                  capabilities:
+                    alwaysMatch:
+                      platformName: Android
+                      appium:deviceName: emulator-5554
+                      appium:app: /path/to/app.apk
+      responses:
+        '200':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionResponse'
+              examples:
+                CreateSession200Example:
+                  summary: Default createSession 200 response
+                  x-microcks-default: true
+                  value:
+                    sessionId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    value:
+                      capabilities:
+                        platformName: Android
+                        deviceName: emulator-5554
+        '500':
+          description: Session creation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{sessionId}:
+    delete:
+      operationId: deleteSession
+      summary: Appium Delete Session
+      description: Ends the current automation session and releases all associated resources.
+      tags:
+      - Sessions
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        description: The unique session identifier
+        schema:
+          type: string
+        example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+      responses:
+        '200':
+          description: Session deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                DeleteSession200Example:
+                  summary: Default deleteSession 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          nullable: true
+          description: Always null for commands that have no return value
+    SessionResponse:
+      title: SessionResponse
+      description: Response from session creation
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: The unique session identifier
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        value:
+          type: object
+          description: Session capabilities and metadata
+    ErrorResponse:
+      title: ErrorResponse
+      description: WebDriver error response
+      type: object
+      properties:
+        value:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code
+              example: no such element
+            message:
+              type: string
+              description: Human-readable error message
+              example: An element could not be located on the page using the given search parameters.
+            stacktrace:
+              type: string
+              description: Stack trace for debugging
+    CreateSessionRequest:
+      title: CreateSessionRequest
+      description: Request body for creating a new WebDriver session
+      type: object
+      properties:
+        capabilities:
+          type: object
+          description: W3C capabilities object with alwaysMatch and firstMatch
+          properties:
+            alwaysMatch:
+              type: object
+              description: Capabilities that must be matched exactly
+            firstMatch:
+              type: array
+              description: List of capabilities to try matching in order
+              items:
+                type: object

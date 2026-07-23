@@ -1,0 +1,150 @@
+openapi: 3.0.3
+info:
+  title: Appium Server Actions API
+  description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    name: Appium Community
+    url: https://discuss.appium.io/
+  x-generated-from: documentation
+servers:
+- url: http://localhost:4723
+  description: Local Appium server (default port)
+tags:
+- name: Actions
+  description: W3C Actions API for complex input sequences
+paths:
+  /session/{sessionId}/actions:
+    post:
+      operationId: performActions
+      summary: Appium Perform Actions
+      description: Performs a sequence of input actions (touch, pointer, keyboard) as defined by the W3C Actions specification.
+      tags:
+      - Actions
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActionsRequest'
+            examples:
+              PerformActionsRequestExample:
+                summary: Default performActions request
+                x-microcks-default: true
+                value:
+                  actions:
+                  - type: pointer
+                    id: finger1
+                    parameters:
+                      pointerType: touch
+                    actions:
+                    - type: pointerMove
+                      duration: 0
+                      x: 100
+                      y: 200
+                    - type: pointerDown
+                      button: 0
+                    - type: pointerUp
+                      button: 0
+      responses:
+        '200':
+          description: Actions performed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                PerformActions200Example:
+                  summary: Default performActions 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: releaseActions
+      summary: Appium Release Actions
+      description: Releases all keys and pointer buttons currently held down.
+      tags:
+      - Actions
+      parameters:
+      - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Actions released successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyValueResponse'
+              examples:
+                ReleaseActions200Example:
+                  summary: Default releaseActions 200 response
+                  x-microcks-default: true
+                  value:
+                    value: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+  schemas:
+    ActionsRequest:
+      title: ActionsRequest
+      description: W3C Actions request body
+      type: object
+      required:
+      - actions
+      properties:
+        actions:
+          type: array
+          description: List of action sequences
+          items:
+            $ref: '#/components/schemas/ActionSequence'
+    ActionSequence:
+      title: ActionSequence
+      description: A sequence of input actions for a single input source
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - pointer
+          - key
+          - wheel
+          - none
+          description: The type of input source
+          example: pointer
+        id:
+          type: string
+          description: Unique identifier for this input source
+          example: finger1
+        parameters:
+          type: object
+          description: Input source parameters (e.g. pointerType)
+        actions:
+          type: array
+          description: List of individual action objects
+          items:
+            type: object
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          nullable: true
+          description: Always null for commands that have no return value
