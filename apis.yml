@@ -3,51 +3,102 @@ description: Appium is an open-source test automation framework governed by the 
   UI automation of many app platforms including mobile (iOS, Android), browser (Chrome, Firefox, Safari), desktop (macOS,
   Windows), and TV (Roku, tvOS, Android TV). It implements the W3C WebDriver protocol and provides an extensible ecosystem
   of drivers, clients, and plugins.
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 image: https://appium.io/docs/en/latest/assets/images/appium-logo.png
 created: '2024-01-15'
 modified: '2026-05-19'
 specificationVersion: '0.18'
 url: https://appium.io/apis.json
 apis:
-- name: Appium Server API
-  description: The main Appium server API that implements the W3C WebDriver protocol for mobile, web, desktop, and TV app
-    automation. Supports session management, element interaction, actions, screenshots, and Appium-specific device commands.
-  image: https://appium.io/docs/en/latest/assets/images/appium-logo.png
-  humanURL: https://appium.io/
+- name: Appium Inspector
+  description: >-
+    Standalone GUI inspector for mobile apps that communicates with an Appium server, enabling visual
+    element inspection and XPath generation for test authoring.
+  humanURL: https://github.com/appium/appium-inspector
+  baseURL: https://github.com/appium/appium-inspector/releases
+  tags:
+  - Debugging
+  - GUI
+  - Inspector
+  - Mobile Testing
+  properties:
+  - type: GitHubRepository
+    url: https://github.com/appium/appium-inspector
+  - type: SDKs
+    url: https://github.com/appium/appium-inspector/releases
+    title: Desktop App Downloads
+- name: Appium UiAutomator2 Driver
+  description: >-
+    The primary Appium driver for Android automation, backed by Google's UiAutomator2 framework. Supports
+    Android 5.0+ devices and emulators.
+  humanURL: https://github.com/appium/appium-uiautomator2-driver
   baseURL: http://localhost:4723
   tags:
   - Android
   - Automation
+  - Driver
+  - Mobile Testing
+  properties:
+  - type: GitHubRepository
+    url: https://github.com/appium/appium-uiautomator2-driver
+  - type: Documentation
+    url: https://github.com/appium/appium-uiautomator2-driver#readme
+- name: Appium XCUITest Driver
+  description: >-
+    The primary Appium driver for iOS and tvOS automation, backed by Apple's XCTest framework. Supports
+    iOS 12+ and macOS Sequoia.
+  humanURL: https://github.com/appium/appium-xcuitest-driver
+  baseURL: http://localhost:4723
+  tags:
+  - Automation
+  - Driver
   - iOS
   - Mobile Testing
-  - WebDriver
+  - tvOS
   properties:
+  - type: GitHubRepository
+    url: https://github.com/appium/appium-xcuitest-driver
+  - type: Documentation
+    url: https://github.com/appium/appium-xcuitest-driver#readme
+- aid: appium:appium-actions-api
+  name: Appium Actions API
+  description: W3C Actions API for complex input sequences
+  humanURL: https://appium.io/
+  baseURL: http://localhost:4723
+  tags:
+  - Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/appium-actions-api-openapi.yml
   - type: Documentation
     url: https://appium.io/docs/en/latest/
-  - type: OpenAPI
-    url: openapi/appium-server-openapi.yaml
   - type: GitHubRepository
     url: https://github.com/appium/appium
   - type: APIReference
     url: https://appium.io/docs/en/latest/reference/
   - type: JSONSchema
     url: json-schema/appium-server-session-info-schema.json
-    title: Session Info Schema
   - type: JSONSchema
     url: json-schema/appium-server-find-element-request-schema.json
-    title: Find Element Request Schema
   - type: JSONSchema
     url: json-schema/appium-server-app-id-request-schema.json
-    title: App ID Request Schema
   - type: JSONSchema
     url: json-schema/appium-server-action-sequence-schema.json
-    title: Action Sequence Schema
   - type: JSONSchema
     url: json-schema/appium-server-cookie-schema.json
-    title: Cookie Schema
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
-    title: Error Response Schema
   - type: X-NaftikoCapability
     url: capabilities/server-actions.yaml
   - type: X-NaftikoCapability
@@ -68,53 +119,438 @@ apis:
     url: capabilities/server-server.yaml
   - type: X-NaftikoCapability
     url: capabilities/server-sessions.yaml
-- name: Appium Inspector
-  description: Standalone GUI inspector for mobile apps that communicates with an Appium server, enabling visual element inspection
-    and XPath generation for test authoring.
-  humanURL: https://github.com/appium/appium-inspector
-  baseURL: https://github.com/appium/appium-inspector/releases
-  tags:
-  - Debugging
-  - GUI
-  - Inspector
-  - Mobile Testing
-  properties:
-  - type: GitHubRepository
-    url: https://github.com/appium/appium-inspector
-  - type: SDKs
-    url: https://github.com/appium/appium-inspector/releases
-    title: Desktop App Downloads
-- name: Appium UiAutomator2 Driver
-  description: The primary Appium driver for Android automation, backed by Google's UiAutomator2 framework. Supports Android
-    5.0+ devices and emulators.
-  humanURL: https://github.com/appium/appium-uiautomator2-driver
+- aid: appium:appium-alerts-api
+  name: Appium Alerts API
+  description: Dialog and alert handling
+  humanURL: https://appium.io/
   baseURL: http://localhost:4723
   tags:
-  - Android
-  - Automation
-  - Driver
-  - Mobile Testing
+  - Alerts
   properties:
-  - type: GitHubRepository
-    url: https://github.com/appium/appium-uiautomator2-driver
+  - type: OpenAPI
+    url: openapi/appium-alerts-api-openapi.yml
   - type: Documentation
-    url: https://github.com/appium/appium-uiautomator2-driver#readme
-- name: Appium XCUITest Driver
-  description: The primary Appium driver for iOS and tvOS automation, backed by Apple's XCTest framework. Supports iOS 12+
-    and macOS Sequoia.
-  humanURL: https://github.com/appium/appium-xcuitest-driver
+    url: https://appium.io/docs/en/latest/
+  - type: GitHubRepository
+    url: https://github.com/appium/appium
+  - type: APIReference
+    url: https://appium.io/docs/en/latest/reference/
+  - type: JSONSchema
+    url: json-schema/appium-server-session-info-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-find-element-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-app-id-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-action-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-cookie-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-error-response-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/server-actions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-alerts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-device.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-cookies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-elements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-navigation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-screenshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-server.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-sessions.yaml
+- aid: appium:appium-appium-device-api
+  name: Appium Appium Device API
+  description: Appium-specific device commands (app management, files, keyboard)
+  humanURL: https://appium.io/
   baseURL: http://localhost:4723
   tags:
-  - Automation
-  - Driver
-  - iOS
-  - Mobile Testing
-  - tvOS
+  - Appium Device
   properties:
-  - type: GitHubRepository
-    url: https://github.com/appium/appium-xcuitest-driver
+  - type: OpenAPI
+    url: openapi/appium-appium-device-api-openapi.yml
   - type: Documentation
-    url: https://github.com/appium/appium-xcuitest-driver#readme
+    url: https://appium.io/docs/en/latest/
+  - type: GitHubRepository
+    url: https://github.com/appium/appium
+  - type: APIReference
+    url: https://appium.io/docs/en/latest/reference/
+  - type: JSONSchema
+    url: json-schema/appium-server-session-info-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-find-element-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-app-id-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-action-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-cookie-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-error-response-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/server-actions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-alerts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-device.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-cookies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-elements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-navigation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-screenshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-server.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-sessions.yaml
+- aid: appium:appium-appium-session-api
+  name: Appium Appium Session API
+  description: Appium session settings and capabilities
+  humanURL: https://appium.io/
+  baseURL: http://localhost:4723
+  tags:
+  - Appium Session
+  properties:
+  - type: OpenAPI
+    url: openapi/appium-appium-session-api-openapi.yml
+  - type: Documentation
+    url: https://appium.io/docs/en/latest/
+  - type: GitHubRepository
+    url: https://github.com/appium/appium
+  - type: APIReference
+    url: https://appium.io/docs/en/latest/reference/
+  - type: JSONSchema
+    url: json-schema/appium-server-session-info-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-find-element-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-app-id-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-action-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-cookie-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-error-response-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/server-actions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-alerts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-device.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-cookies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-elements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-navigation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-screenshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-server.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-sessions.yaml
+- aid: appium:appium-cookies-api
+  name: Appium Cookies API
+  description: Cookie management
+  humanURL: https://appium.io/
+  baseURL: http://localhost:4723
+  tags:
+  - Cookies
+  properties:
+  - type: OpenAPI
+    url: openapi/appium-cookies-api-openapi.yml
+  - type: Documentation
+    url: https://appium.io/docs/en/latest/
+  - type: GitHubRepository
+    url: https://github.com/appium/appium
+  - type: APIReference
+    url: https://appium.io/docs/en/latest/reference/
+  - type: JSONSchema
+    url: json-schema/appium-server-session-info-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-find-element-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-app-id-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-action-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-cookie-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-error-response-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/server-actions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-alerts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-device.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-cookies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-elements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-navigation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-screenshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-server.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-sessions.yaml
+- aid: appium:appium-elements-api
+  name: Appium Elements API
+  description: Element discovery and interaction
+  humanURL: https://appium.io/
+  baseURL: http://localhost:4723
+  tags:
+  - Elements
+  properties:
+  - type: OpenAPI
+    url: openapi/appium-elements-api-openapi.yml
+  - type: Documentation
+    url: https://appium.io/docs/en/latest/
+  - type: GitHubRepository
+    url: https://github.com/appium/appium
+  - type: APIReference
+    url: https://appium.io/docs/en/latest/reference/
+  - type: JSONSchema
+    url: json-schema/appium-server-session-info-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-find-element-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-app-id-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-action-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-cookie-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-error-response-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/server-actions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-alerts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-device.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-cookies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-elements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-navigation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-screenshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-server.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-sessions.yaml
+- aid: appium:appium-navigation-api
+  name: Appium Navigation API
+  description: Browser and app navigation commands
+  humanURL: https://appium.io/
+  baseURL: http://localhost:4723
+  tags:
+  - Navigation
+  properties:
+  - type: OpenAPI
+    url: openapi/appium-navigation-api-openapi.yml
+  - type: Documentation
+    url: https://appium.io/docs/en/latest/
+  - type: GitHubRepository
+    url: https://github.com/appium/appium
+  - type: APIReference
+    url: https://appium.io/docs/en/latest/reference/
+  - type: JSONSchema
+    url: json-schema/appium-server-session-info-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-find-element-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-app-id-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-action-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-cookie-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-error-response-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/server-actions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-alerts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-device.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-cookies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-elements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-navigation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-screenshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-server.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-sessions.yaml
+- aid: appium:appium-screenshots-api
+  name: Appium Screenshots API
+  description: Screenshot capture
+  humanURL: https://appium.io/
+  baseURL: http://localhost:4723
+  tags:
+  - Screenshots
+  properties:
+  - type: OpenAPI
+    url: openapi/appium-screenshots-api-openapi.yml
+  - type: Documentation
+    url: https://appium.io/docs/en/latest/
+  - type: GitHubRepository
+    url: https://github.com/appium/appium
+  - type: APIReference
+    url: https://appium.io/docs/en/latest/reference/
+  - type: JSONSchema
+    url: json-schema/appium-server-session-info-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-find-element-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-app-id-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-action-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-cookie-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-error-response-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/server-actions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-alerts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-device.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-cookies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-elements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-navigation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-screenshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-server.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-sessions.yaml
+- aid: appium:appium-server-api
+  name: Appium Server API
+  description: Server status and session listing
+  humanURL: https://appium.io/
+  baseURL: http://localhost:4723
+  tags:
+  - Server
+  properties:
+  - type: OpenAPI
+    url: openapi/appium-server-api-openapi.yml
+  - type: Documentation
+    url: https://appium.io/docs/en/latest/
+  - type: GitHubRepository
+    url: https://github.com/appium/appium
+  - type: APIReference
+    url: https://appium.io/docs/en/latest/reference/
+  - type: JSONSchema
+    url: json-schema/appium-server-session-info-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-find-element-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-app-id-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-action-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-cookie-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-error-response-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/server-actions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-alerts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-device.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-cookies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-elements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-navigation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-screenshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-server.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-sessions.yaml
+- aid: appium:appium-sessions-api
+  name: Appium Sessions API
+  description: WebDriver session lifecycle management
+  humanURL: https://appium.io/
+  baseURL: http://localhost:4723
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/appium-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://appium.io/docs/en/latest/
+  - type: GitHubRepository
+    url: https://github.com/appium/appium
+  - type: APIReference
+    url: https://appium.io/docs/en/latest/reference/
+  - type: JSONSchema
+    url: json-schema/appium-server-session-info-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-find-element-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-app-id-request-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-action-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-cookie-schema.json
+  - type: JSONSchema
+    url: json-schema/appium-server-error-response-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/server-actions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-alerts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-device.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-appium-session.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-cookies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-elements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-navigation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-screenshots.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-server.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/server-sessions.yaml
 maintainers:
 - FN: Appium Contributors
   email: appium@googlegroups.com
