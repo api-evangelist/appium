@@ -1,0 +1,32 @@
+{
+  "provider": "appium",
+  "sources": [
+    "appium-actions-api-openapi.yml",
+    "appium-alerts-api-openapi.yml",
+    "appium-appium-device-api-openapi.yml",
+    "appium-appium-session-api-openapi.yml",
+    "appium-cookies-api-openapi.yml",
+    "appium-elements-api-openapi.yml",
+    "appium-navigation-api-openapi.yml",
+    "appium-screenshots-api-openapi.yml",
+    "appium-server-api-openapi.yml",
+    "appium-sessions-api-openapi.yml"
+  ],
+  "outputs": [
+    "appium-actions-api-openapi.yml",
+    "appium-alerts-api-openapi.yml",
+    "appium-appium-device-api-openapi.yml",
+    "appium-appium-session-api-openapi.yml",
+    "appium-cookies-api-openapi.yml",
+    "appium-elements-api-openapi.yml",
+    "appium-navigation-api-openapi.yml",
+    "appium-screenshots-api-openapi.yml",
+    "appium-server-api-openapi.yml",
+    "appium-sessions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
