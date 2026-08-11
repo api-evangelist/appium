@@ -99,26 +99,6 @@ apis:
     url: json-schema/appium-server-cookie-schema.json
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/server-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-alerts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-device.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-session.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-cookies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-navigation.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-screenshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-server.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-sessions.yaml
 - aid: appium:appium-alerts-api
   name: Appium Alerts API
   description: Dialog and alert handling
@@ -147,26 +127,6 @@ apis:
     url: json-schema/appium-server-cookie-schema.json
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/server-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-alerts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-device.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-session.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-cookies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-navigation.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-screenshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-server.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-sessions.yaml
 - aid: appium:appium-appium-device-api
   name: Appium Appium Device API
   description: Appium-specific device commands (app management, files, keyboard)
@@ -195,26 +155,6 @@ apis:
     url: json-schema/appium-server-cookie-schema.json
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/server-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-alerts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-device.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-session.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-cookies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-navigation.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-screenshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-server.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-sessions.yaml
 - aid: appium:appium-appium-session-api
   name: Appium Appium Session API
   description: Appium session settings and capabilities
@@ -243,26 +183,6 @@ apis:
     url: json-schema/appium-server-cookie-schema.json
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/server-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-alerts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-device.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-session.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-cookies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-navigation.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-screenshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-server.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-sessions.yaml
 - aid: appium:appium-cookies-api
   name: Appium Cookies API
   description: Cookie management
@@ -291,26 +211,6 @@ apis:
     url: json-schema/appium-server-cookie-schema.json
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/server-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-alerts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-device.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-session.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-cookies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-navigation.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-screenshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-server.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-sessions.yaml
 - aid: appium:appium-elements-api
   name: Appium Elements API
   description: Element discovery and interaction
@@ -339,26 +239,6 @@ apis:
     url: json-schema/appium-server-cookie-schema.json
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/server-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-alerts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-device.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-session.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-cookies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-navigation.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-screenshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-server.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-sessions.yaml
 - aid: appium:appium-navigation-api
   name: Appium Navigation API
   description: Browser and app navigation commands
@@ -387,26 +267,6 @@ apis:
     url: json-schema/appium-server-cookie-schema.json
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/server-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-alerts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-device.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-session.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-cookies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-navigation.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-screenshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-server.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-sessions.yaml
 - aid: appium:appium-screenshots-api
   name: Appium Screenshots API
   description: Screenshot capture
@@ -435,26 +295,6 @@ apis:
     url: json-schema/appium-server-cookie-schema.json
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/server-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-alerts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-device.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-session.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-cookies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-navigation.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-screenshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-server.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-sessions.yaml
 - aid: appium:appium-server-api
   name: Appium Server API
   description: Server status and session listing
@@ -483,26 +323,6 @@ apis:
     url: json-schema/appium-server-cookie-schema.json
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/server-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-alerts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-device.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-session.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-cookies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-navigation.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-screenshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-server.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-sessions.yaml
 - aid: appium:appium-sessions-api
   name: Appium Sessions API
   description: WebDriver session lifecycle management
@@ -531,26 +351,6 @@ apis:
     url: json-schema/appium-server-cookie-schema.json
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/server-actions.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-alerts.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-device.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-appium-session.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-cookies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-navigation.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-screenshots.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-server.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/server-sessions.yaml
 maintainers:
 - FN: Appium Contributors
   email: appium@googlegroups.com
@@ -565,6 +365,15 @@ tags:
 - Test Automation
 - WebDriver
 common:
+- type: IssueTracker
+  url: https://github.com/appium/appium-inspector/issues
+- type: CodeOfConduct
+  url: https://github.com/appium/.github/blob/master/CODE_OF_CONDUCT.md
+- type: ContributionGuide
+  url: https://github.com/appium/appium-inspector/blob/main/docs/contributing.md
+- type: License
+  name: Apache-2.0
+  url: https://github.com/appium/appium-inspector/blob/main/LICENSE
 - type: AgenticAccess
   url: agentic-access/appium-agentic-access.yml
 - type: DomainSecurity
