@@ -1,0 +1,122 @@
+{
+  "item": [
+    {
+      "id": "9d3267d8-c441-4782-9d06-a29e20c3ded9",
+      "name": "Cookies",
+      "description": {
+        "content": "Cookie management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b1ba942-c042-44bd-a173-cbf187d8e4d9",
+          "name": "Appium Get All Cookies",
+          "request": {
+            "name": "Appium Get All Cookies",
+            "description": {
+              "content": "Returns all cookies visible to the current page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "session",
+                ":sessionId",
+                "cookie"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) The unique session identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a9fe8bf-0082-4c66-b28d-1d15f34e3365",
+              "name": "Cookies returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    ":sessionId",
+                    "cookie"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) The unique session identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"name\": \"session\",\n      \"value\": \"abc123\",\n      \"domain\": \"example.com\",\n      \"path\": \"/\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:4723",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "090b0387-8058-401e-b4d8-6944d1a73e59",
+    "name": "Appium Server Actions Cookies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.\n\nContact Support:\n Name: Appium Community",
+      "type": "text/plain"
+    }
+  }
+}

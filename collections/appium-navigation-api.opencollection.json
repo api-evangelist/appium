@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appium Server Actions Navigation API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Navigation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Appium Get Current URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4723/session/:sessionId/url",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ]
+          },
+          "docs": "Returns the URL of the current page or app context."
+        },
+        {
+          "info": {
+            "name": "Appium Navigate to URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:4723/session/:sessionId/url",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Navigates to a given URL or activates a deep link."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

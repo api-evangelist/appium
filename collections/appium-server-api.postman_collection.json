@@ -1,0 +1,174 @@
+{
+  "item": [
+    {
+      "id": "806319f2-45aa-4bed-af14-93ba03a879a0",
+      "name": "Server",
+      "description": {
+        "content": "Server status and session listing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e35b728a-7c64-4efd-807e-09bac85fbb39",
+          "name": "Appium Get Server Status",
+          "request": {
+            "name": "Appium Get Server Status",
+            "description": {
+              "content": "Returns the current status of the Appium server including readiness and metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "420f3fb0-d268-48e6-ade4-5becb6166bb6",
+              "name": "Server status returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": {\n    \"ready\": true,\n    \"message\": \"The server is ready to accept new connections\",\n    \"build\": {\n      \"version\": \"2.5.0\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3481ffc2-6a78-4a10-9728-1d746567bded",
+          "name": "Appium Get All Sessions",
+          "request": {
+            "name": "Appium Get All Sessions",
+            "description": {
+              "content": "Returns a list of all currently active Appium sessions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "appium",
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e3f5f5b-cce4-4ed3-93b7-6157b9e9e537",
+              "name": "Sessions list returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appium",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"capabilities\": {\n        \"platformName\": \"Android\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:4723",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "20ab202f-8cb6-43fa-be68-acab75843630",
+    "name": "Appium Actions Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.\n\nContact Support:\n Name: Appium Community",
+      "type": "text/plain"
+    }
+  }
+}

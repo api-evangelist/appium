@@ -1,0 +1,190 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appium Server Actions Appium Device API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appium Device",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Appium Activate App",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:4723/session/:sessionId/appium/device/activate_app",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Brings the specified app to the foreground. The app must already be installed."
+        },
+        {
+          "info": {
+            "name": "Appium Terminate App",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:4723/session/:sessionId/appium/device/terminate_app",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Terminates the specified app if it is running."
+        },
+        {
+          "info": {
+            "name": "Appium Install App",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:4723/session/:sessionId/appium/device/install_app",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Installs the app from the given path on the device."
+        },
+        {
+          "info": {
+            "name": "Appium Remove App",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:4723/session/:sessionId/appium/device/remove_app",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uninstalls the specified app from the device."
+        },
+        {
+          "info": {
+            "name": "Appium Is Keyboard Shown",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4723/session/:sessionId/appium/device/is_keyboard_shown",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ]
+          },
+          "docs": "Returns whether the soft keyboard is currently visible on the device."
+        },
+        {
+          "info": {
+            "name": "Appium Get Device Time",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4723/session/:sessionId/appium/device/system_time",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ]
+          },
+          "docs": "Returns the current date and time from the device."
+        },
+        {
+          "info": {
+            "name": "Appium Get Orientation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4723/session/:sessionId/orientation",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ]
+          },
+          "docs": "Returns the current device orientation (LANDSCAPE or PORTRAIT)."
+        },
+        {
+          "info": {
+            "name": "Appium Set Orientation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:4723/session/:sessionId/orientation",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the device orientation to LANDSCAPE or PORTRAIT."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

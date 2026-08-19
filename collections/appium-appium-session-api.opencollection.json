@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appium Server Actions Appium Session API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appium Session",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Appium Get Session Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4723/session/:sessionId/appium/settings",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ]
+          },
+          "docs": "Returns the current Appium settings for the session."
+        },
+        {
+          "info": {
+            "name": "Appium Update Session Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:4723/session/:sessionId/appium/settings",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates Appium settings for the current session."
+        },
+        {
+          "info": {
+            "name": "Appium Get Current Context",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4723/session/:sessionId/context",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ]
+          },
+          "docs": "Returns the current context (NATIVE_APP or a webview name)."
+        },
+        {
+          "info": {
+            "name": "Appium Set Context",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:4723/session/:sessionId/context",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Switches to a different context (NATIVE_APP or a webview)."
+        },
+        {
+          "info": {
+            "name": "Appium Get Available Contexts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4723/session/:sessionId/contexts",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ]
+          },
+          "docs": "Returns a list of all available contexts in the current session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

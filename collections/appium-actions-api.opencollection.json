@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appium Server Actions API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Appium Perform Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:4723/session/:sessionId/actions",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Performs a sequence of input actions (touch, pointer, keyboard) as defined by the W3C Actions specification."
+        },
+        {
+          "info": {
+            "name": "Appium Release Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:4723/session/:sessionId/actions",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ]
+          },
+          "docs": "Releases all keys and pointer buttons currently held down."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

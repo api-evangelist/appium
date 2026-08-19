@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appium Server Actions Screenshots API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Screenshots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Appium Take Screenshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4723/session/:sessionId/screenshot",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              }
+            ]
+          },
+          "docs": "Returns a base64-encoded PNG screenshot of the current screen."
+        },
+        {
+          "info": {
+            "name": "Appium Take Element Screenshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4723/session/:sessionId/element/:elementId/screenshot",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "The unique session identifier"
+              },
+              {
+                "name": "elementId",
+                "value": "1234567890",
+                "type": "path",
+                "description": "The unique element identifier within the session"
+              }
+            ]
+          },
+          "docs": "Returns a base64-encoded PNG screenshot of the specified element."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appium Actions Server API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Appium Get Server Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4723/status"
+          },
+          "docs": "Returns the current status of the Appium server including readiness and metadata."
+        },
+        {
+          "info": {
+            "name": "Appium Get All Sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:4723/appium/sessions"
+          },
+          "docs": "Returns a list of all currently active Appium sessions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
