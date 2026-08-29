@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Appium Server Actions Sessions API
   description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
@@ -105,20 +105,7 @@ components:
       type: object
       properties:
         value:
-          nullable: true
           description: Always null for commands that have no return value
-    SessionResponse:
-      title: SessionResponse
-      description: Response from session creation
-      type: object
-      properties:
-        sessionId:
-          type: string
-          description: The unique session identifier
-          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-        value:
-          type: object
-          description: Session capabilities and metadata
     ErrorResponse:
       title: ErrorResponse
       description: WebDriver error response
@@ -138,6 +125,18 @@ components:
             stacktrace:
               type: string
               description: Stack trace for debugging
+    SessionResponse:
+      title: SessionResponse
+      description: Response from session creation
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: The unique session identifier
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        value:
+          type: object
+          description: Session capabilities and metadata
     CreateSessionRequest:
       title: CreateSessionRequest
       description: Request body for creating a new WebDriver session

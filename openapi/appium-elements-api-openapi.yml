@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Appium Server Actions Elements API
   description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
@@ -220,6 +220,31 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ElementResponse:
+      title: ElementResponse
+      description: Single element returned from a find operation
+      type: object
+      properties:
+        value:
+          type: object
+          description: Element reference object
+          properties:
+            ELEMENT:
+              type: string
+              description: Legacy element identifier
+              example: '1234567890'
+            element-6066-11e4-a52e-4f735466cecf:
+              type: string
+              description: W3C element identifier
+              example: '1234567890'
+    StringValueResponse:
+      title: StringValueResponse
+      description: Standard response with a string value
+      type: object
+      properties:
+        value:
+          type: string
+          description: The returned string value
     ElementsResponse:
       title: ElementsResponse
       description: Multiple elements returned from a find operation
@@ -242,7 +267,6 @@ components:
       type: object
       properties:
         value:
-          nullable: true
           description: Always null for commands that have no return value
     ErrorResponse:
       title: ErrorResponse
@@ -263,14 +287,6 @@ components:
             stacktrace:
               type: string
               description: Stack trace for debugging
-    StringValueResponse:
-      title: StringValueResponse
-      description: Standard response with a string value
-      type: object
-      properties:
-        value:
-          type: string
-          description: The returned string value
     FindElementRequest:
       title: FindElementRequest
       description: Request to find an element using a locator strategy
@@ -300,23 +316,6 @@ components:
           type: string
           description: The selector value for the locator strategy
           example: Login Button
-    ElementResponse:
-      title: ElementResponse
-      description: Single element returned from a find operation
-      type: object
-      properties:
-        value:
-          type: object
-          description: Element reference object
-          properties:
-            ELEMENT:
-              type: string
-              description: Legacy element identifier
-              example: '1234567890'
-            element-6066-11e4-a52e-4f735466cecf:
-              type: string
-              description: W3C element identifier
-              example: '1234567890'
   parameters:
     SessionId:
       name: sessionId
