@@ -384,6 +384,8 @@ tags_raw:
 - Test Automation
 - WebDriver
 common:
+- type: Website
+  url: https://appium.io
 - type: IssueTracker
   url: https://github.com/appium/appium-inspector/issues
 - type: CodeOfConduct
