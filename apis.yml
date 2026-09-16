@@ -1,8 +1,8 @@
 name: Appium
-description: Appium is an open-source test automation framework governed by the OpenJS Foundation, designed to facilitate
-  UI automation of many app platforms including mobile (iOS, Android), browser (Chrome, Firefox, Safari), desktop (macOS,
-  Windows), and TV (Roku, tvOS, Android TV). It implements the W3C WebDriver protocol and provides an extensible ecosystem
-  of drivers, clients, and plugins.
+description: Appium is an open-source test automation framework governed by the OpenJS Foundation, designed
+  to facilitate UI automation of many app platforms including mobile (iOS, Android), browser (Chrome,
+  Firefox, Safari), desktop (macOS, Windows), and TV (Roku, tvOS, Android TV). It implements the W3C WebDriver
+  protocol and provides an extensible ecosystem of drivers, clients, and plugins.
 deliveryModel:
   model: self-hosted
   license: Apache-2.0
@@ -30,14 +30,13 @@ accessModel:
   method: derived
 image: https://appium.io/docs/en/latest/assets/images/appium-logo.png
 created: '2024-01-15'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 url: https://appium.io/apis.json
 apis:
 - name: Appium Inspector
-  description: >-
-    Standalone GUI inspector for mobile apps that communicates with an Appium server, enabling visual
-    element inspection and XPath generation for test authoring.
+  description: Standalone GUI inspector for mobile apps that communicates with an Appium server, enabling
+    visual element inspection and XPath generation for test authoring.
   humanURL: https://github.com/appium/appium-inspector
   baseURL: https://github.com/appium/appium-inspector/releases
   tags:
@@ -52,9 +51,8 @@ apis:
     url: https://github.com/appium/appium-inspector/releases
     title: Desktop App Downloads
 - name: Appium UiAutomator2 Driver
-  description: >-
-    The primary Appium driver for Android automation, backed by Google's UiAutomator2 framework. Supports
-    Android 5.0+ devices and emulators.
+  description: The primary Appium driver for Android automation, backed by Google's UiAutomator2 framework.
+    Supports Android 5.0+ devices and emulators.
   humanURL: https://github.com/appium/appium-uiautomator2-driver
   baseURL: http://localhost:4723
   tags:
@@ -68,9 +66,8 @@ apis:
   - type: Documentation
     url: https://github.com/appium/appium-uiautomator2-driver#readme
 - name: Appium XCUITest Driver
-  description: >-
-    The primary Appium driver for iOS and tvOS automation, backed by Apple's XCTest framework. Supports
-    iOS 12+ and macOS Sequoia.
+  description: The primary Appium driver for iOS and tvOS automation, backed by Apple's XCTest framework.
+    Supports iOS 12+ and macOS Sequoia.
   humanURL: https://github.com/appium/appium-xcuitest-driver
   baseURL: http://localhost:4723
   tags:
@@ -141,7 +138,7 @@ apis:
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
 - aid: appium:appium-appium-device-api
-  name: Appium Appium Device API
+  name: Appium Device API
   description: Appium-specific device commands (app management, files, keyboard)
   humanURL: https://appium.io/
   baseURL: http://localhost:4723
@@ -169,7 +166,7 @@ apis:
   - type: JSONSchema
     url: json-schema/appium-server-error-response-schema.json
 - aid: appium:appium-appium-session-api
-  name: Appium Appium Session API
+  name: Appium Session API
   description: Appium session settings and capabilities
   humanURL: https://appium.io/
   baseURL: http://localhost:4723
