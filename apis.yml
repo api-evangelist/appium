@@ -368,6 +368,7 @@ maintainers:
   email: appium@googlegroups.com
   url: https://github.com/appium/appium/graphs/contributors
 tags:
+- Appium
 - Android
 - Cross-Platform
 - iOS
