@@ -311,6 +311,8 @@ apis:
   humanURL: https://appium.io/
   baseURL: http://localhost:4723
   tags:
+  - Servers
+  tags_raw:
   - Server
   properties:
   - type: OpenAPI
@@ -374,8 +376,8 @@ tags:
 - OpenJS Foundation
 - Test Automation
 - WebDriver
-- Appium
 tags_raw:
+- Appium
 - Android
 - Cross-Platform
 - iOS
