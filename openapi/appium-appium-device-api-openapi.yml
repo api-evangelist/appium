@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Appium Server Actions Appium Device API
+  title: Appium Server Appium Device API
   description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
   version: 2.0.0
   license:
@@ -288,14 +288,6 @@ components:
         value:
           type: boolean
           description: The returned boolean value
-    StringValueResponse:
-      title: StringValueResponse
-      description: Standard response with a string value
-      type: object
-      properties:
-        value:
-          type: string
-          description: The returned string value
     EmptyValueResponse:
       title: EmptyValueResponse
       description: Standard response with null value
@@ -316,6 +308,14 @@ components:
           type: string
           description: iOS bundle identifier
           example: com.example.app
+    StringValueResponse:
+      title: StringValueResponse
+      description: Standard response with a string value
+      type: object
+      properties:
+        value:
+          type: string
+          description: The returned string value
   parameters:
     SessionId:
       name: sessionId

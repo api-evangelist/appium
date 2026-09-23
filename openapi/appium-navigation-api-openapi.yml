@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Appium Server Actions Navigation API
+  title: Appium Server Navigation API
   description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
   version: 2.0.0
   license:

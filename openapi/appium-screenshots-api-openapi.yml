@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Appium Server Actions Screenshots API
+  title: Appium Server Screenshots API
   description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
   version: 2.0.0
   license:
@@ -69,23 +69,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    SessionId:
-      name: sessionId
-      in: path
-      required: true
-      description: The unique session identifier
-      schema:
-        type: string
-      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-    ElementId:
-      name: elementId
-      in: path
-      required: true
-      description: The unique element identifier within the session
-      schema:
-        type: string
-      example: '1234567890'
   schemas:
     StringValueResponse:
       title: StringValueResponse
@@ -95,3 +78,20 @@ components:
         value:
           type: string
           description: The returned string value
+  parameters:
+    ElementId:
+      name: elementId
+      in: path
+      required: true
+      description: The unique element identifier within the session
+      schema:
+        type: string
+      example: '1234567890'
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Appium Server Actions Appium Session API
+  title: Appium Server Appium Session API
   description: The Appium Server API implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. It provides endpoints for session management, element interaction, actions, screenshots, and Appium-specific device commands.
   version: 2.0.0
   license:
@@ -173,6 +173,21 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SettingsResponse:
+      title: SettingsResponse
+      description: Appium session settings
+      type: object
+      properties:
+        value:
+          type: object
+          description: Key-value map of current settings
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          description: Always null for commands that have no return value
     ArrayValueResponse:
       title: ArrayValueResponse
       description: Standard response with an array value
@@ -183,14 +198,6 @@ components:
           description: The returned array value
           items:
             type: string
-    SettingsResponse:
-      title: SettingsResponse
-      description: Appium session settings
-      type: object
-      properties:
-        value:
-          type: object
-          description: Key-value map of current settings
     StringValueResponse:
       title: StringValueResponse
       description: Standard response with a string value
@@ -199,13 +206,6 @@ components:
         value:
           type: string
           description: The returned string value
-    EmptyValueResponse:
-      title: EmptyValueResponse
-      description: Standard response with null value
-      type: object
-      properties:
-        value:
-          description: Always null for commands that have no return value
   parameters:
     SessionId:
       name: sessionId
