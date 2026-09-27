@@ -79,14 +79,6 @@ components:
           type: string
           description: The returned string value
   parameters:
-    ElementId:
-      name: elementId
-      in: path
-      required: true
-      description: The unique element identifier within the session
-      schema:
-        type: string
-      example: '1234567890'
     SessionId:
       name: sessionId
       in: path
@@ -95,3 +87,11 @@ components:
       schema:
         type: string
       example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+    ElementId:
+      name: elementId
+      in: path
+      required: true
+      description: The unique element identifier within the session
+      schema:
+        type: string
+      example: '1234567890'

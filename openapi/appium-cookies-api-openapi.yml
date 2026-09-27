@@ -48,6 +48,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    CookiesResponse:
+      title: CookiesResponse
+      description: List of browser cookies
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cookie'
     Cookie:
       title: Cookie
       description: Browser cookie object
@@ -77,15 +86,6 @@ components:
           type: boolean
           description: Whether the cookie requires HTTPS
           example: false
-    CookiesResponse:
-      title: CookiesResponse
-      description: List of browser cookies
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cookie'
   parameters:
     SessionId:
       name: sessionId

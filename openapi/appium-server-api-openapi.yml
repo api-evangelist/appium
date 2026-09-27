@@ -72,6 +72,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SessionsListResponse:
+      title: SessionsListResponse
+      description: List of active Appium sessions
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionInfo'
     StatusResponse:
       title: StatusResponse
       description: Appium server status response
@@ -109,12 +118,3 @@ components:
         capabilities:
           type: object
           description: The capabilities used to create the session
-    SessionsListResponse:
-      title: SessionsListResponse
-      description: List of active Appium sessions
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/SessionInfo'

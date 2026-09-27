@@ -181,13 +181,14 @@ components:
         value:
           type: object
           description: Key-value map of current settings
-    EmptyValueResponse:
-      title: EmptyValueResponse
-      description: Standard response with null value
+    StringValueResponse:
+      title: StringValueResponse
+      description: Standard response with a string value
       type: object
       properties:
         value:
-          description: Always null for commands that have no return value
+          type: string
+          description: The returned string value
     ArrayValueResponse:
       title: ArrayValueResponse
       description: Standard response with an array value
@@ -198,14 +199,13 @@ components:
           description: The returned array value
           items:
             type: string
-    StringValueResponse:
-      title: StringValueResponse
-      description: Standard response with a string value
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
       type: object
       properties:
         value:
-          type: string
-          description: The returned string value
+          description: Always null for commands that have no return value
   parameters:
     SessionId:
       name: sessionId

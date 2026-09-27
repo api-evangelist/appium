@@ -220,21 +220,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    EmptyValueResponse:
-      title: EmptyValueResponse
-      description: Standard response with null value
-      type: object
-      properties:
-        value:
-          description: Always null for commands that have no return value
-    StringValueResponse:
-      title: StringValueResponse
-      description: Standard response with a string value
-      type: object
-      properties:
-        value:
-          type: string
-          description: The returned string value
     FindElementRequest:
       title: FindElementRequest
       description: Request to find an element using a locator strategy
@@ -264,22 +249,14 @@ components:
           type: string
           description: The selector value for the locator strategy
           example: Login Button
-    ElementsResponse:
-      title: ElementsResponse
-      description: Multiple elements returned from a find operation
+    StringValueResponse:
+      title: StringValueResponse
+      description: Standard response with a string value
       type: object
       properties:
         value:
-          type: array
-          items:
-            type: object
-            properties:
-              ELEMENT:
-                type: string
-                example: '1234567890'
-              element-6066-11e4-a52e-4f735466cecf:
-                type: string
-                example: '1234567890'
+          type: string
+          description: The returned string value
     ElementResponse:
       title: ElementResponse
       description: Single element returned from a find operation
@@ -297,6 +274,29 @@ components:
               type: string
               description: W3C element identifier
               example: '1234567890'
+    ElementsResponse:
+      title: ElementsResponse
+      description: Multiple elements returned from a find operation
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            type: object
+            properties:
+              ELEMENT:
+                type: string
+                example: '1234567890'
+              element-6066-11e4-a52e-4f735466cecf:
+                type: string
+                example: '1234567890'
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          description: Always null for commands that have no return value
     ErrorResponse:
       title: ErrorResponse
       description: WebDriver error response
@@ -317,14 +317,6 @@ components:
               type: string
               description: Stack trace for debugging
   parameters:
-    SessionId:
-      name: sessionId
-      in: path
-      required: true
-      description: The unique session identifier
-      schema:
-        type: string
-      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
     ElementId:
       name: elementId
       in: path
@@ -333,3 +325,11 @@ components:
       schema:
         type: string
       example: '1234567890'
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890

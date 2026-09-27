@@ -373,10 +373,11 @@ tags:
 - Cross-Platform
 - iOS
 - Mobile Testing
-- Open-Source
+- Open Source
 - OpenJS Foundation
 - Test Automation
 - WebDriver
+- Testing
 tags_raw:
 - Appium
 - Android
@@ -387,6 +388,8 @@ tags_raw:
 - OpenJS Foundation
 - Test Automation
 - WebDriver
+- Open-Source
+- Testing
 common:
 - type: Website
   url: https://appium.io
