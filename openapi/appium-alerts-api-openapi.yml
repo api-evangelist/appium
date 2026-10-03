@@ -80,14 +80,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  schemas:
-    EmptyValueResponse:
-      title: EmptyValueResponse
-      description: Standard response with null value
-      type: object
-      properties:
-        value:
-          description: Always null for commands that have no return value
   parameters:
     SessionId:
       name: sessionId
@@ -97,3 +89,11 @@ components:
       schema:
         type: string
       example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+  schemas:
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          description: Always null for commands that have no return value

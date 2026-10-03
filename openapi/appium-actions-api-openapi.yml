@@ -92,26 +92,16 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
   schemas:
-    EmptyValueResponse:
-      title: EmptyValueResponse
-      description: Standard response with null value
-      type: object
-      properties:
-        value:
-          description: Always null for commands that have no return value
-    ActionsRequest:
-      title: ActionsRequest
-      description: W3C Actions request body
-      type: object
-      required:
-      - actions
-      properties:
-        actions:
-          type: array
-          description: List of action sequences
-          items:
-            $ref: '#/components/schemas/ActionSequence'
     ActionSequence:
       title: ActionSequence
       description: A sequence of input actions for a single input source
@@ -138,12 +128,22 @@ components:
           description: List of individual action objects
           items:
             type: object
-  parameters:
-    SessionId:
-      name: sessionId
-      in: path
-      required: true
-      description: The unique session identifier
-      schema:
-        type: string
-      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+    ActionsRequest:
+      title: ActionsRequest
+      description: W3C Actions request body
+      type: object
+      required:
+      - actions
+      properties:
+        actions:
+          type: array
+          description: List of action sequences
+          items:
+            $ref: '#/components/schemas/ActionSequence'
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          description: Always null for commands that have no return value

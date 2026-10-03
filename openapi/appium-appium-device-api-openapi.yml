@@ -301,6 +301,13 @@ components:
         value:
           type: boolean
           description: The returned boolean value
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          description: Always null for commands that have no return value
     StringValueResponse:
       title: StringValueResponse
       description: Standard response with a string value
@@ -309,13 +316,6 @@ components:
         value:
           type: string
           description: The returned string value
-    EmptyValueResponse:
-      title: EmptyValueResponse
-      description: Standard response with null value
-      type: object
-      properties:
-        value:
-          description: Always null for commands that have no return value
   parameters:
     SessionId:
       name: sessionId

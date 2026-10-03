@@ -99,42 +99,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    EmptyValueResponse:
-      title: EmptyValueResponse
-      description: Standard response with null value
-      type: object
-      properties:
-        value:
-          description: Always null for commands that have no return value
-    CreateSessionRequest:
-      title: CreateSessionRequest
-      description: Request body for creating a new WebDriver session
-      type: object
-      properties:
-        capabilities:
-          type: object
-          description: W3C capabilities object with alwaysMatch and firstMatch
-          properties:
-            alwaysMatch:
-              type: object
-              description: Capabilities that must be matched exactly
-            firstMatch:
-              type: array
-              description: List of capabilities to try matching in order
-              items:
-                type: object
-    SessionResponse:
-      title: SessionResponse
-      description: Response from session creation
-      type: object
-      properties:
-        sessionId:
-          type: string
-          description: The unique session identifier
-          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-        value:
-          type: object
-          description: Session capabilities and metadata
     ErrorResponse:
       title: ErrorResponse
       description: WebDriver error response
@@ -154,3 +118,39 @@ components:
             stacktrace:
               type: string
               description: Stack trace for debugging
+    SessionResponse:
+      title: SessionResponse
+      description: Response from session creation
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: The unique session identifier
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        value:
+          type: object
+          description: Session capabilities and metadata
+    CreateSessionRequest:
+      title: CreateSessionRequest
+      description: Request body for creating a new WebDriver session
+      type: object
+      properties:
+        capabilities:
+          type: object
+          description: W3C capabilities object with alwaysMatch and firstMatch
+          properties:
+            alwaysMatch:
+              type: object
+              description: Capabilities that must be matched exactly
+            firstMatch:
+              type: array
+              description: List of capabilities to try matching in order
+              items:
+                type: object
+    EmptyValueResponse:
+      title: EmptyValueResponse
+      description: Standard response with null value
+      type: object
+      properties:
+        value:
+          description: Always null for commands that have no return value

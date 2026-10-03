@@ -47,16 +47,16 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
   schemas:
-    CookiesResponse:
-      title: CookiesResponse
-      description: List of browser cookies
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cookie'
     Cookie:
       title: Cookie
       description: Browser cookie object
@@ -86,12 +86,12 @@ components:
           type: boolean
           description: Whether the cookie requires HTTPS
           example: false
-  parameters:
-    SessionId:
-      name: sessionId
-      in: path
-      required: true
-      description: The unique session identifier
-      schema:
-        type: string
-      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+    CookiesResponse:
+      title: CookiesResponse
+      description: List of browser cookies
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cookie'
