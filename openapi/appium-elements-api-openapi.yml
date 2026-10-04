@@ -220,6 +220,14 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    StringValueResponse:
+      title: StringValueResponse
+      description: Standard response with a string value
+      type: object
+      properties:
+        value:
+          type: string
+          description: The returned string value
     ErrorResponse:
       title: ErrorResponse
       description: WebDriver error response
@@ -279,14 +287,6 @@ components:
               type: string
               description: W3C element identifier
               example: '1234567890'
-    StringValueResponse:
-      title: StringValueResponse
-      description: Standard response with a string value
-      type: object
-      properties:
-        value:
-          type: string
-          description: The returned string value
     FindElementRequest:
       title: FindElementRequest
       description: Request to find an element using a locator strategy

@@ -80,15 +80,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    SessionId:
-      name: sessionId
-      in: path
-      required: true
-      description: The unique session identifier
-      schema:
-        type: string
-      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
   schemas:
     StringValueResponse:
       title: StringValueResponse
@@ -105,3 +96,12 @@ components:
       properties:
         value:
           description: Always null for commands that have no return value
+  parameters:
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      description: The unique session identifier
+      schema:
+        type: string
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890

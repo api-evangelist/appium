@@ -280,19 +280,14 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    AppIdRequest:
-      title: AppIdRequest
-      description: Request body identifying an app by package name or bundle ID
+    StringValueResponse:
+      title: StringValueResponse
+      description: Standard response with a string value
       type: object
       properties:
-        appId:
+        value:
           type: string
-          description: App package name (Android) or bundle ID (iOS)
-          example: com.example.app
-        bundleId:
-          type: string
-          description: iOS bundle identifier
-          example: com.example.app
+          description: The returned string value
     BooleanValueResponse:
       title: BooleanValueResponse
       description: Standard response with a boolean value
@@ -308,14 +303,19 @@ components:
       properties:
         value:
           description: Always null for commands that have no return value
-    StringValueResponse:
-      title: StringValueResponse
-      description: Standard response with a string value
+    AppIdRequest:
+      title: AppIdRequest
+      description: Request body identifying an app by package name or bundle ID
       type: object
       properties:
-        value:
+        appId:
           type: string
-          description: The returned string value
+          description: App package name (Android) or bundle ID (iOS)
+          example: com.example.app
+        bundleId:
+          type: string
+          description: iOS bundle identifier
+          example: com.example.app
   parameters:
     SessionId:
       name: sessionId

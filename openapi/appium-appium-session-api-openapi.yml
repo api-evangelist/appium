@@ -173,16 +173,14 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ArrayValueResponse:
-      title: ArrayValueResponse
-      description: Standard response with an array value
+    StringValueResponse:
+      title: StringValueResponse
+      description: Standard response with a string value
       type: object
       properties:
         value:
-          type: array
-          description: The returned array value
-          items:
-            type: string
+          type: string
+          description: The returned string value
     SettingsResponse:
       title: SettingsResponse
       description: Appium session settings
@@ -198,14 +196,16 @@ components:
       properties:
         value:
           description: Always null for commands that have no return value
-    StringValueResponse:
-      title: StringValueResponse
-      description: Standard response with a string value
+    ArrayValueResponse:
+      title: ArrayValueResponse
+      description: Standard response with an array value
       type: object
       properties:
         value:
-          type: string
-          description: The returned string value
+          type: array
+          description: The returned array value
+          items:
+            type: string
   parameters:
     SessionId:
       name: sessionId
