@@ -391,6 +391,12 @@ tags_raw:
 - Open-Source
 - Testing
 common:
+- type: Plans
+  url: plans/appium-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/appium-rate-limits.yml
+- type: FinOps
+  url: finops/appium-finops.yml
 - type: Website
   url: https://appium.io
 - type: IssueTracker
