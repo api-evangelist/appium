@@ -1,205 +1,24 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/appium-server-openapi.yaml
+source: openapi/appium-actions-api-openapi.yml, openapi/appium-alerts-api-openapi.yml, openapi/appium-appium-device-api-openapi.yml,
+  openapi/appium-appium-session-api-openapi.yml, openapi/appium-cookies-api-openapi.yml, openapi/appium-elements-api-openapi.yml,
+  openapi/appium-navigation-api-openapi.yml, openapi/appium-screenshots-api-openapi.yml, openapi/appium-server-api-openapi.yml,
+  openapi/appium-sessions-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 32
   by_action_class:
-    connected: 14
-    acting: 18
+    acting: 16
+    connected: 16
   by_consequence:
-    read: 14
-    write: 16
-    physical: 1
+    write: 14
     safety-critical: 1
+    read: 16
+    physical: 1
   human_in_the_loop_required: 1
 operations:
-- path: /status
-  method: get
-  operationId: getStatus
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /session
-  method: post
-  operationId: createSession
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /session/{sessionId}
-  method: delete
-  operationId: deleteSession
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /appium/sessions
-  method: get
-  operationId: getAppiumSessions
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /session/{sessionId}/url
-  method: get
-  operationId: getUrl
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /session/{sessionId}/url
-  method: post
-  operationId: setUrl
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /session/{sessionId}/screenshot
-  method: get
-  operationId: getScreenshot
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /session/{sessionId}/element
-  method: post
-  operationId: findElement
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /session/{sessionId}/elements
-  method: post
-  operationId: findElements
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /session/{sessionId}/element/{elementId}/click
-  method: post
-  operationId: click
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /session/{sessionId}/element/{elementId}/value
-  method: post
-  operationId: setValue
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /session/{sessionId}/element/{elementId}/text
-  method: get
-  operationId: getText
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /session/{sessionId}/element/{elementId}/screenshot
-  method: get
-  operationId: getElementScreenshot
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /session/{sessionId}/source
-  method: get
-  operationId: getPageSource
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /session/{sessionId}/actions
   method: post
   operationId: performActions
@@ -251,42 +70,6 @@ operations:
 - path: /session/{sessionId}/alert/accept
   method: post
   operationId: acceptAlert
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /session/{sessionId}/cookie
-  method: get
-  operationId: getCookies
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /session/{sessionId}/appium/settings
-  method: get
-  operationId: getSettings
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /session/{sessionId}/appium/settings
-  method: post
-  operationId: updateSettings
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -410,6 +193,32 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /session/{sessionId}/appium/settings
+  method: get
+  operationId: getSettings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /session/{sessionId}/appium/settings
+  method: post
+  operationId: updateSettings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /session/{sessionId}/context
   method: get
   operationId: getCurrentContext
@@ -446,3 +255,185 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /session/{sessionId}/cookie
+  method: get
+  operationId: getCookies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /session/{sessionId}/element
+  method: post
+  operationId: findElement
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /session/{sessionId}/elements
+  method: post
+  operationId: findElements
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /session/{sessionId}/element/{elementId}/click
+  method: post
+  operationId: click
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /session/{sessionId}/element/{elementId}/value
+  method: post
+  operationId: setValue
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /session/{sessionId}/element/{elementId}/text
+  method: get
+  operationId: getText
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /session/{sessionId}/source
+  method: get
+  operationId: getPageSource
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /session/{sessionId}/url
+  method: get
+  operationId: getUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /session/{sessionId}/url
+  method: post
+  operationId: setUrl
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /session/{sessionId}/screenshot
+  method: get
+  operationId: getScreenshot
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /session/{sessionId}/element/{elementId}/screenshot
+  method: get
+  operationId: getElementScreenshot
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /status
+  method: get
+  operationId: getStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /appium/sessions
+  method: get
+  operationId: getAppiumSessions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /session
+  method: post
+  operationId: createSession
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /session/{sessionId}
+  method: delete
+  operationId: deleteSession
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
