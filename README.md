@@ -1,4 +1,4 @@
-# Appium (appium)
+# Appium
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,198 +66,210 @@
 
 Appium is an open-source test automation framework governed by the OpenJS Foundation, designed to facilitate UI automation of many app platforms including mobile (iOS, Android), browser (Chrome, Firefox, Safari), desktop (macOS, Windows), and TV (Roku, tvOS, Android TV). It implements the W3C WebDriver protocol and provides an extensible ecosystem of drivers, clients, and plugins.
 
-**URL:** [Visit APIs.json URL](https://appium.io/apis.json)
+**Areas:** Appium · Android · Cross-Platform · iOS · Mobile Testing · Open Source · OpenJS Foundation · Test Automation · WebDriver · Testing
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Appium on APIs.io
 
-## Tags:
+Everything profiled for Appium is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/appium/](https://apis.io/providers/appium/)** — or go straight to one of the APIs or properties below.
 
- - Android, Cross-Platform, iOS, Mobile Testing, Open Source, OpenJS Foundation, Test Automation, WebDriver
+### APIs (13)
 
-## Timestamps
+- [Appium Inspector](https://apis.io/apis/appium/appium-inspector/) — Standalone GUI inspector for mobile apps that communicates with an Appium server, enabling visual element inspection and XPath generation for test authoring.
+- [Appium UiAutomator2 Driver](https://apis.io/apis/appium/appium-uiautomator2-driver/) — The primary Appium driver for Android automation, backed by Google's UiAutomator2 framework. Supports Android 5.0+ devices and emulators.
+- [Appium XCUITest Driver](https://apis.io/apis/appium/appium-xcuitest-driver/) — The primary Appium driver for iOS and tvOS automation, backed by Apple's XCTest framework. Supports iOS 12+ and macOS Sequoia.
+- [Appium Actions API](https://apis.io/apis/appium/appium-actions-api/) — W3C Actions API for complex input sequences
+- [Appium Alerts API](https://apis.io/apis/appium/appium-alerts-api/) — Dialog and alert handling
+- [Appium Device API](https://apis.io/apis/appium/appium-appium-device-api/) — Appium-specific device commands (app management, files, keyboard)
+- [Appium Session API](https://apis.io/apis/appium/appium-appium-session-api/) — Appium session settings and capabilities
+- [Appium Cookies API](https://apis.io/apis/appium/appium-cookies-api/) — Cookie management
+- [Appium Elements API](https://apis.io/apis/appium/appium-elements-api/) — Element discovery and interaction
+- [Appium Navigation API](https://apis.io/apis/appium/appium-navigation-api/) — Browser and app navigation commands
+- [Appium Screenshots API](https://apis.io/apis/appium/appium-screenshots-api/) — Screenshot capture
+- [Appium Server API](https://apis.io/apis/appium/appium-server-api/) — Server status and session listing
+- [Appium Sessions API](https://apis.io/apis/appium/appium-sessions-api/) — WebDriver session lifecycle management
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Appium Server API
-The main Appium server API that implements the W3C WebDriver protocol for mobile, web, desktop, and TV app automation. Supports session management, element interaction, actions, screenshots, and Appium-specific device commands.
+#### MCP servers (1)
 
-**Human URL:** [https://appium.io/](https://appium.io/)
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags:
+- [MCP Server](https://apis.io/servers/appium/mcp-server/)
 
- - Android, Automation, iOS, Mobile Testing, WebDriver
+#### Agent skills (10)
 
-#### Properties
+Agent skills built on the API.
 
+- [appium-troubleshooting](https://apis.io/agent-skills/appium/appium-troubleshooting/)
+- [environment-setup-android](https://apis.io/agent-skills/appium/environment-setup-android/)
+- [environment-setup-bundletool](https://apis.io/agent-skills/appium/environment-setup-bundletool/)
+- [environment-setup-chromium](https://apis.io/agent-skills/appium/environment-setup-chromium/)
+- [environment-setup-espresso](https://apis.io/agent-skills/appium/environment-setup-espresso/)
+- [environment-setup-ffmpeg](https://apis.io/agent-skills/appium/environment-setup-ffmpeg/)
+- [environment-setup-node](https://apis.io/agent-skills/appium/environment-setup-node/)
+- [environment-setup-uiautomator2](https://apis.io/agent-skills/appium/environment-setup-uiautomator2/)
+- [environment-setup-xcuitest](https://apis.io/agent-skills/appium/environment-setup-xcuitest/)
+- [xcuitest-real-device-config](https://apis.io/agent-skills/appium/xcuitest-real-device-config/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Appium Agentic Access](https://apis.io/agentic-access/appium/appium-agentic-access/)
+
+#### JSON Schema (6)
+
+The data models the API reads and writes.
+
+- [ActionSequence](https://apis.io/schemas/appium/appium-server-action-sequence/)
+- [AppIdRequest](https://apis.io/schemas/appium/appium-server-app-id-request/)
+- [Cookie](https://apis.io/schemas/appium/appium-server-cookie/)
+- [ErrorResponse](https://apis.io/schemas/appium/appium-server-error-response/)
+- [FindElementRequest](https://apis.io/schemas/appium/appium-server-find-element-request/)
+- [SessionInfo](https://apis.io/schemas/appium/appium-server-session-info/)
+
+#### JSON Structure (6)
+
+Data models expressed in JSON Structure.
+
+- [Appium Server Action Sequence Structure](https://apis.io/json-structure/appium/appium-server-action-sequence-structure/)
+- [Appium Server App Id Request Structure](https://apis.io/json-structure/appium/appium-server-app-id-request-structure/)
+- [Appium Server Cookie Structure](https://apis.io/json-structure/appium/appium-server-cookie-structure/)
+- [Appium Server Error Response Structure](https://apis.io/json-structure/appium/appium-server-error-response-structure/)
+- [Appium Server Find Element Request Structure](https://apis.io/json-structure/appium/appium-server-find-element-request-structure/)
+- [Appium Server Session Info Structure](https://apis.io/json-structure/appium/appium-server-session-info-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Appium Server Context](https://apis.io/jsonld/appium/appium-server-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Appium Vocabulary](https://apis.io/vocabularies/appium/appium-vocabulary/)
+
+#### Examples (6)
+
+Example requests and responses.
+
+- [Appium Server Action Sequence Example](https://apis.io/examples/appium/appium-server-action-sequence-example/)
+- [Appium Server App Id Request Example](https://apis.io/examples/appium/appium-server-app-id-request-example/)
+- [Appium Server Cookie Example](https://apis.io/examples/appium/appium-server-cookie-example/)
+- [Appium Server Error Response Example](https://apis.io/examples/appium/appium-server-error-response-example/)
+- [Appium Server Find Element Request Example](https://apis.io/examples/appium/appium-server-find-element-request-example/)
+- [Appium Server Session Info Example](https://apis.io/examples/appium/appium-server-session-info-example/)
+
+#### Collections (10)
+
+Postman and Open Collection request collections.
+
+- [Appium Server Actions API](https://apis.io/collections/appium/open-appium-actions-api/)
+- [Appium Server Actions Alerts API](https://apis.io/collections/appium/open-appium-alerts-api/)
+- [Appium Server Actions Appium Device API](https://apis.io/collections/appium/open-appium-appium-device-api/)
+- [Appium Server Actions Appium Session API](https://apis.io/collections/appium/open-appium-appium-session-api/)
+- [Appium Server Actions Cookies API](https://apis.io/collections/appium/open-appium-cookies-api/)
+- [Appium Server Actions Elements API](https://apis.io/collections/appium/open-appium-elements-api/)
+- [Appium Server Actions Navigation API](https://apis.io/collections/appium/open-appium-navigation-api/)
+- [Appium Server Actions Screenshots API](https://apis.io/collections/appium/open-appium-screenshots-api/)
+- [Appium Actions Server API](https://apis.io/collections/appium/open-appium-server-api/)
+- [Appium Server Actions Sessions API](https://apis.io/collections/appium/open-appium-sessions-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Appium — jsonschema rules](https://apis.io/rules/appium/appium-jsonschema-spectral-rules/)
+- [Appium API Rules](https://apis.io/rules/appium/appium-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Appium Domain Security](https://apis.io/security/appium/appium-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Appium Plans Pricing](https://apis.io/plans/appium/appium-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Appium Rate Limits](https://apis.io/rate-limits/appium/appium-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Appium Finops](https://apis.io/finops/appium/appium-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://appium.io)
 - [Documentation](https://appium.io/docs/en/latest/)
-- [OpenAPI](openapi/appium-server-openapi.yaml)
-- [GitHubRepository](https://github.com/appium/appium)
-- [APIReference](https://appium.io/docs/en/latest/reference/)
-- [JSONSchema - Session Info Schema](json-schema/appium-server-session-info-schema.json)
-- [JSONSchema - Find Element Request Schema](json-schema/appium-server-find-element-request-schema.json)
-- [JSONSchema - App ID Request Schema](json-schema/appium-server-app-id-request-schema.json)
-- [JSONSchema - Action Sequence Schema](json-schema/appium-server-action-sequence-schema.json)
-- [JSONSchema - Cookie Schema](json-schema/appium-server-cookie-schema.json)
-- [JSONSchema - Error Response Schema](json-schema/appium-server-error-response-schema.json)
-
-### Appium Inspector
-Standalone GUI inspector for mobile apps that communicates with an Appium server, enabling visual element inspection and XPath generation for test authoring.
-
-**Human URL:** [https://github.com/appium/appium-inspector](https://github.com/appium/appium-inspector)
-
-#### Tags:
-
- - Debugging, GUI, Inspector, Mobile Testing
-
-#### Properties
-
-- [GitHubRepository](https://github.com/appium/appium-inspector)
-- [SDK - Desktop App Downloads](https://github.com/appium/appium-inspector/releases)
-
-### Appium UiAutomator2 Driver
-The primary Appium driver for Android automation, backed by Google's UiAutomator2 framework. Supports Android 5.0+ devices and emulators.
-
-**Human URL:** [https://github.com/appium/appium-uiautomator2-driver](https://github.com/appium/appium-uiautomator2-driver)
-
-#### Tags:
-
- - Android, Automation, Driver, Mobile Testing
-
-#### Properties
-
-- [GitHubRepository](https://github.com/appium/appium-uiautomator2-driver)
-- [Documentation](https://github.com/appium/appium-uiautomator2-driver#readme)
-
-### Appium XCUITest Driver
-The primary Appium driver for iOS and tvOS automation, backed by Apple's XCTest framework. Supports iOS 12+ and macOS Sequoia.
-
-**Human URL:** [https://github.com/appium/appium-xcuitest-driver](https://github.com/appium/appium-xcuitest-driver)
-
-#### Tags:
-
- - Automation, Driver, iOS, Mobile Testing, tvOS
-
-#### Properties
-
-- [GitHubRepository](https://github.com/appium/appium-xcuitest-driver)
-- [Documentation](https://github.com/appium/appium-xcuitest-driver#readme)
-
-## Common Properties
-
-- [GettingStarted](https://appium.io/docs/en/latest/quickstart/)
-- [GitHubOrganization](https://github.com/appium)
-- [Documentation](https://appium.io/docs/en/latest/)
+- [Getting started](https://appium.io/docs/en/latest/quickstart/)
 - [Support](https://discuss.appium.io/)
-- [Slack](http://appium.slack.com)
-- [StackOverflow](https://stackoverflow.com/questions/tagged/appium)
-- [YouTube](https://www.youtube.com/c/AppiumConf)
-- [ChangeLog](https://github.com/appium/appium/blob/master/CHANGELOG.md)
-- [SDK - Python Client](https://github.com/appium/python-client)
-- [SDK - Java Client](https://github.com/appium/java-client)
-- [SDK - Ruby Client](https://github.com/appium/ruby_lib_core)
-- [SDK - .NET Client](https://github.com/appium/dotnet-client)
-- [Tools - MCP Server](https://github.com/appium/appium-mcp)
+- [Changelog](https://github.com/appium/appium/blob/master/CHANGELOG.md)
+- [GitHub](https://github.com/appium)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Multi-Platform Support | Automate iOS, Android, Windows, macOS, web browsers, and TV platforms from a single framework |
-| WebDriver Protocol | Implements the W3C WebDriver protocol for standard, cross-platform automation |
-| Extensible Driver Architecture | Plugin-based driver system supports any platform through community and official drivers |
-| Multiple Language Clients | Official client libraries for Python, Java, JavaScript, Ruby, .NET, and more |
-| WebDriver BiDi Support | Supports the next-generation WebDriver BiDi bidirectional protocol |
-| MCP Server | Model Context Protocol server for AI-assisted test automation |
-| Inspector GUI | Visual app inspector for element discovery and XPath/accessibility ID generation |
+**Kin Score 33.8** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 25.4 |
+| Contract governance | 27.3 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 56.4 |
+| Access clarity | 5.3 |
 
-| Name | Description |
-|------|-------------|
-| Mobile App Testing | Automated functional and regression testing of iOS and Android native apps |
-| Cross-Platform Test Suites | Single test codebase targeting multiple platforms and devices |
-| CI/CD Integration | Running automated mobile tests in continuous integration pipelines |
-| Web Automation | Browser automation on mobile and desktop via WebDriver |
-| AI-Assisted Testing | Using the MCP server to enable AI agents to drive test execution |
+**Agent readiness 26.8** — agent-aware
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | unknown |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| BrowserStack | Cloud device farm integration for running Appium tests on real devices |
-| Sauce Labs | Cloud testing platform with Appium support for real and virtual devices |
-| LambdaTest | Cloud test execution platform with Appium integration |
-| TestNG | Java testing framework commonly used with Appium Java client |
-| pytest | Python testing framework used with the Appium Python client |
-| WebdriverIO | JavaScript test automation framework with built-in Appium support |
-| Selenium Grid | Distributed test execution grid compatible with Appium sessions |
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/appium/](https://apis.io/providers/appium/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [Appium Server API](openapi/appium-server-openapi.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Appium: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-- [Session Info Schema](json-schema/appium-server-session-info-schema.json)
-- [Find Element Request Schema](json-schema/appium-server-find-element-request-schema.json)
-- [App ID Request Schema](json-schema/appium-server-app-id-request-schema.json)
-- [Action Sequence Schema](json-schema/appium-server-action-sequence-schema.json)
-- [Cookie Schema](json-schema/appium-server-cookie-schema.json)
-- [Error Response Schema](json-schema/appium-server-error-response-schema.json)
-
-### JSON Structure
-
-- [Session Info Structure](json-structure/appium-server-session-info-structure.json)
-- [Find Element Request Structure](json-structure/appium-server-find-element-request-structure.json)
-- [App ID Request Structure](json-structure/appium-server-app-id-request-structure.json)
-- [Action Sequence Structure](json-structure/appium-server-action-sequence-structure.json)
-- [Cookie Structure](json-structure/appium-server-cookie-structure.json)
-- [Error Response Structure](json-structure/appium-server-error-response-structure.json)
-
-### JSON-LD
-
-- [Appium Server Context](json-ld/appium-server-context.jsonld)
-
-### Examples
-
-- [Session Info Example](examples/appium-server-session-info-example.json)
-- [Find Element Request Example](examples/appium-server-find-element-request-example.json)
-- [App ID Request Example](examples/appium-server-app-id-request-example.json)
-- [Action Sequence Example](examples/appium-server-action-sequence-example.json)
-- [Cookie Example](examples/appium-server-cookie-example.json)
-- [Error Response Example](examples/appium-server-error-response-example.json)
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [Appium Server API](capabilities/shared/appium-server.yaml) — 7 operations for WebDriver protocol automation
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Mobile Test Automation](capabilities/mobile-test-automation.yaml) | Appium Server API | 7 | QA Engineer, Test Automation Engineer |
-
-## Vocabulary
-
-- [Appium Vocabulary](vocabulary/appium-vocabulary.yaml) — Unified taxonomy mapping 10 resources, 10 actions, 1 workflow, and 2 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [Appium Spectral Rules](rules/appium-spectral-rules.yml) — 26 rules across 8 categories enforcing Appium API conventions
-
-## Maintainers
-
-**FN:** Appium Contributors
-
-**Email:** appium@googlegroups.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/appium/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
